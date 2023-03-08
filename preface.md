@@ -2,13 +2,14 @@
 title: "Preface"
 filename: "preface"
 chapternum: "p"
+geometry: margin=30mm
 ---
 
 # Preface {#prefacechapter}
 
 >_"Physics, which is one of the oldest academic disciplines, has had plenty of time to figure out a way to visit the year 4515 and see if humans are still around or have been taken over by a race of intelligent spiders, is broken into multiple branches including particle physics and astrophysics, neither of which has led to the construction of a time-traveling device so who gives a shit."_, [*The Onion Book of Known Knowledge*](https://mathijs.info/files/ebooks/onion.pdf), 2012.
 
-This course is intended to provide insight into how to manipulate large quantities of data similar to a particle physicist, and how to use the tools to do so. Now, as a PhD student who has yet to even pass his Graduate Board Oral Exam (GBO), you may think, "Is this schmuck even qualified to type these words??" I guess not really - but we all start somewhere. (Pro Tip: If you think I'm wholly unqualified to be writing this, you are probably right. *Please* help me out by suggesting material to add or revise!) Over the course of my PhD I hope to continue to update this text with sections about things that I *wish* I had when I was learning to conduct analyses. This also involves pointing you to the people who can tell you about processes better than I ever could - the developers themselves!
+This course is intended to provide insight into how to manipulate large quantities of data similar to a particle physicist, and how to use the tools to do so. Now, as a PhD student who has yet to even pass his Graduate Board Oral Exam (GBO), you may think, "Is this schmuck even qualified to type these words??" I guess not really - but we all start somewhere. (Pro Tip: If you think I'm wholly unqualified to be writing this, you are probably right. *Please* help me out by either suggesting material to add or revise, or write some stuff up to help me out!) Over the course of my PhD I hope to continue to update this text with sections about things that I *wish* I had when I was learning to conduct analyses. This also involves pointing you to the people who can tell you about processes/packages better than I ever could - the developers themselves!
 
 The educational goals will be to cover the following (and this will be updated as time goes on):
 
@@ -28,6 +29,8 @@ I hope to be as helpful as possible when writing this text - but at the end of t
 Similarly, Python is a dominant force in scientific computing, and it gets very painful sometimes to see people still using Python 2, writing code that is essentially not human-readable, or writing code that is needlessly *slow*! Similarly, for those of you who are not in particle or astrophysics, it's sometimes not necessary to utilize large-scale data analyses, and sometimes not necessary to learn them at all. But, you should still learn! The ability to analyze large quantities of data properly and efficiently also gives you the ability to analyze small quantities of data properly and efficiently!
 
 ## Usefulness to Non-Physicists
+
+Physicists handle large amounts of data, and if you are interested in learning about how to analyze large amounts of data, this may be the place for you! The same techniques and tools used by people in physics have been used by many people (there were [actuaries](https://www.casact.org/abstract/root-data-analysis-and-data-mining-tool-cern) who *wanted* to use ROOT!). I think this text can be very helpful to anyone looking for an introduction to analyzing data.
 
 ## The Importance of Documentation
 
