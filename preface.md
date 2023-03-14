@@ -16,11 +16,13 @@ The educational goals will be to cover the following (and this will be updated a
 * An (*extremely*) brief introduction to
   * Python
   * C++
-  * Fortran (yes I know)
+  * Algorithmic Analysis
 * CERN ROOT
-* Pythonic methods of interfacing with CERN ROOT
-* Bypassing ROOT entirely (in some cases)
+  * Pythonic methods of interfacing with CERN ROOT
+  * Bypassing ROOT entirely (in most cases)
 * Speed
+  * Vectorization
+  * Good Practices
 
 ## Usefulness to Physicists
 
