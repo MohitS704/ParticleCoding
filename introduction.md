@@ -55,9 +55,11 @@ If you do not know Python or C++, fear not! This text will not be covering _how_
 
 Trying to break a coding language is one of the fastest ways to learn a programming language. For each chapter, there is a supplementary Jupyter Notebook designed for exploration of certain concepts covered in the chapter - it is my recommendation that you use them to just try things out!
 
+## Starting with Python
+
 ### Variable Assignment
 
-#### C++
+<!-- #### C++
 
 C++ has what is known as a statically typed language - the types are declared explicitly to assign variables. To assign a variable, there needs to be a type in front i.e.
 
@@ -66,11 +68,11 @@ int x = 10;
 long double y = 1e6;
 string z = "HELLO"
 x = "I CAN'T DO THIS"; //This will break. The string you are trying to assign it to doesn't exist.
-```
+``` -->
 
-#### Python
+<!-- #### Python -->
 
-In Python, however, variables can take any form that you would like. This isn't great for documentation purposes, but there are ways to document types without being as strict as C++. Similarly, in Python, you can "unpack" variables from iterable quantities, which is also shown below:
+In Python, variables can take any form that you would like. This isn't great for documentation purposes, but there are ways to document types without being as strict as C++. Similarly, in Python, you can "unpack" variables from iterable quantities, which is also shown below:
 
 ```python
 x = 10
@@ -80,11 +82,11 @@ x, y, z = [1,2,3]
 (w, x), (y, z) = [(0,1), (2,3)] #Here the extra parentheses are needed, as the list only has 2 items, and without the parentheses to evaluate the pairs separately, Python would expect 4 items in the list and throw an error.
 ```
 
-## Functions
+### Functions
 
 Functions in coding are similar to functions in math - they take an input and (sometimes) return an output. Imagine when you see a function that you are replacing the function call with its return value. Functions are one of the most useful things when coding - they allow someone to do something similar over and over again without having to rewrite nearly anything!
 
-### C++
+<!-- ### C++
 
 Similar to variables, functions _need_ to have types in C++. This becomes very tricky when functions start returning complex values like datatypes or arrays without explicit sizes, but it's nice to know what a function will return with certainty (if a function does not return anything its type will be `void`). Similarly, functions in C++ can be _overloaded._ What this means is you can have the same function with a different signature, and C++ will know it's a different function. This is how you can get C++ to do the same thing to different data types, i.e.:
 
@@ -100,11 +102,17 @@ int square(double x){
 }
 ```
 
-### Python
+### Python -->
 
 Functions in Python are not constrained by many limitations. They need to be defined, and that is really all it is.
 
-### Recursion
+### Useful Data Structures
+
+TODO: cover lists, dictionaries, maps, ranges
+
+### For and While Loops
+
+## Recursion
 
 Recursion in coding is when a function calls itself. Recursive functions need 2 things to really work:
 
@@ -116,9 +124,9 @@ Recursion in coding is when a function calls itself. Recursive functions need 2 
 
    This one might be more "obvious," but it's the cause of many problems when dealing with recursion. To go back to the Fibonacci Sequence, the solution to $F(n)$ is $F(n-1) + F(n-2)$, both of which are inputs smaller than n which work their way down to the base case.
 
-Recursive functions need these two aspects since the size of the problem must keep shrinking down to a known quantity - otherwise recursion will continue infinitely. Some examples of recursive functions are placed in the supplementary Jupyter Notebook. 
+Recursive functions need these two aspects since the size of the problem must keep shrinking down to a known quantity - otherwise recursion will continue infinitely. Some examples of recursive functions are placed in the supplementary Jupyter Notebook.
 
-### Documenting Functions
+## Documenting Functions
 
 There are ways to document code in both [C++](https://developer.lsst.io/cpp/api-docs.html) and [Python](https://numpydoc.readthedocs.io/en/latest/format.html). These methods are very important, especially so with Python, since there isn't any type information built into the code! One of the main goals of this course will be to hammer in the necessity of documentation into your skulls!
 
@@ -206,33 +214,88 @@ $
 \end{aligned}
 $
 
-## Determining Time Complexity
+#### Determining Time Complexity
 
 So a bunch of math stuff has been convered, but how does someone really tell when something is a certain time complexity? Well, there are a few simple ways. Imagine giving your algorithm some input of size n, and think about how many times your algorithm goes through those elements. For example, if there was some code that looked like this
 
 ``` python
-for i in range(N):
-  for j in range(N):
+for i in range(n):
+  for j in range(n):
     do_something()
 ```
 
-it would be a process that takes $\mathcal{O}(n^2)$ time.
+it would be a process that takes $\mathcal{\Theta}(n^2)$ time. It takes practice to develop an intuition for it, but it's best to think about how many times something is computed over in the worst case to judge the runtime. For instance, in the example above, a nested for loop means that there are n operations done n times, making for a runtime of $n^2$.
 
-### Basic Recursive Analysis
+There are other analyses of code timing, such as [amortized](https://en.wikipedia.org/wiki/Amortized_analysis) time and [average](https://en.wikipedia.org/wiki/Average-case_complexity) time, but they will not be covered in this text. However, should algorithm analysis prove to be something you enjoy, please look into it! It's very interesting stuff!
 
-Another useful tool to think about is to combine time complexity and recursion.
+If you'd like more information on determining time complexity in a real and applicable way, this [Stack Overflow](https://stackoverflow.com/questions/3255/big-o-how-do-you-calculate-approximate-it) post from 2008 is a really good starting point.
+
+### Space Complexity
+
+Much like time complexity, there is also space complexity. The categorizations are _exactly_ the same as the time complexity bounds (Big-O, Big-Omega, Big-Theta, etc.), however this deals with the amount of memory required for an algorithm. For example - using a $n\times n$ sized cartesian grid to simulate something (like maybe a Boundary-Value Problem from Electrodynamics) - takes $\mathcal{\Theta}\left(n^2\right)$ memory. While not used as often as time complexity in everyday analysis - especially since space has become more plentiful on modern computers - it's still a useful quantity to measure.
+
+## Basic Recursive Analysis
+
+### Recursion Relations
+
+Another useful tool to think about is to combine time complexity and recursion. These come in the form of recursion relations - and are expressed in functional form. Going back to the Fibonacci Sequence, the recurrence relation looks as such:
+$$ f(n) = f(n - 1) + f(n - 2) + \mathcal{O}\left(1\right), \quad f(0) = f(1) = 1$$
+What this equation means is that to calculate the function for a value n, the value at $(n - 1)$ and $(n - 2)$ must also be calculated, with one additional operation (addition). The basecases are then listing the time required for the basecases, such that an end is defined. Keep in mind that the numbers provided are not the answer to the function, but rather the amount of time it takes for the function to run, or the number of operations! As long as this time is within the same asympotic bound (i.e. all constant time steps go to 1) it is _usually_ okay.
+
+For "divide and conquer" algorithms - which are useful tools for a wide range of problems - recursion relations may look more like the following:
+$$ f(n) = f\left(\frac{n}{2}\right) + g(n) $$
+Where c is a constant. This recursion relation means that to calculate the function at a value of n, the value at $\frac{n}{2}$ must also be calculated. The function g(n) is some function that indicates how many operations are done at every step of recursion - it can be anything ranging from a constant, like in the Fibonacci relation, to any other function like $n!$.
+
+### Determining Runtime
+
+For recursion, it is a bit harder to think about the runtime in the same way that an iterative solution would. Imagine two functions that are used to print a list starting from a specific index, shown below:
+
+```python
+def print_list_iterative(lst, i):
+  for i in range(i, len(lst)):
+    print(lst[i])
+  return
+
+def print_list_recursive(lst, i):
+  if i >= len(lst):
+    return
+  print(lst[i]) #There is no need for an else statement since a function will end at the return statement
+  print_list_recursion(lst, i+1) #notice how this is recursing "upwards" to a basecase. This is still okay since the sample space is decreasing!
+```
+
+Taking the size n to be the size of the list starting at index i, the runtime of the iterative function can be taken to be $\mathcal{\Theta}(n)$. The recursive function also takes $\mathcal{\Theta}(n)$, but it may be harder to see that. It helps to then think about the number of operations something has to do in the recurrence relation, which in this case is $f(i) = f(i+1) + 1, f(n) = 1$. Due to our definition of n, this function would take n recursion steps. Since each step takes 1 operation, the runtime looks as follows:
+$$f(i) = \sum_{i}^n 1 = n \in \mathcal{\Theta}(n) $$
+
+Another useful tool is the recursion tree. The Fibonacci function is actually _very_ costly, with a runtime of about $\mathcal{O}\left(2^n\right)$ - which is not obvious at all! Looking at the recursion tree, however, clues you into why this is the case:
+![Recursion tree for the Fibonacci Sequence](https://i.stack.imgur.com/QVSdv.png)
+For a Fibonacci tree, the height of the tree is proportional to the input number (aka the input "size"). There are on the order of $2^n$ "leaves," or endpoints, of this tree - meaning that the runtime is $2^n\times 1 = 2^n$! This is super slow!
+
+### The Master Theorem
+
+The Master Theorem is a useful method for determining the runtime of recurrence relations that contain division of the sample space in some way. It is given by the following, for equations of the form $f(n) = a f\left(\frac{n}{b}\right) + g(n)$:
+
+$$
+\begin{cases}
+  g(n) \in \mathcal{\Theta}(n^c) \text{ for some } c < \log_b(a) \qquad \implies f(n) \in \mathcal{\Theta}(n^{\log_b(a)})\\
+  g(n) \in \mathcal{\Theta}(n^c) \text{ for some } c = \log_b(a) \qquad \implies f(n) \in \mathcal{\Theta}(n^c\log(n))\\
+  g(n) \in \mathcal{\Theta}(n^c) \text{ for some } c > \log_b(a) \qquad \implies f(n) \in \mathcal{\Theta}(g(n))
+\end{cases}
+$$
+
+Each case is an illustration of what terms dominate in the calculations with regards to the recursion tree. In the first case, the actual calculations are relatively inexpensive, so the main contribution to the runtime is the number of divisions itself. In the second case, the constribution from the number of divisions and the contribution from the calculation at each level are about the same. In the third case, the calculation at each level dominates the runtime.
 
 ## Exercises
 
 ### 1) Recursion
 
-1. Write a simple function called `fact(n)` that calculates the Fibonacci numbers - one in C++ and one in Python - recursively. Is there a difference in the runtime between n=20 and n=50?
+1. Write a simple function called `fib(n)` that calculates the Fibonacci numbers in Python recursively. Run your code over a range of values from 1 to 25, and try plotting the runtimes of each in a line. What does it look like?
 **_HINT:_ What is/are the base case(s) of the Fibonacci Sequence?**
 
-2. One of the major drawbacks to basic recursion is that values have to calculated repeatedly. For instance, in the Fibonacci sequence, $Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)= (Fibonacci(n-2) + Fibonacci(n-3)) + (Fibonacci(n-3) + Fibonacci(n-4))$ and so on. This wastes computational time! Is there a way that you can think of to speed this process up? Implement it and compare the time of your new function with `fact(n)` from part 1.
+1. One of the major drawbacks to basic recursion is that values have to calculated repeatedly. For instance, in the Fibonacci sequence, $Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)= (Fibonacci(n-2) + Fibonacci(n-3)) + (Fibonacci(n-3) + Fibonacci(n-4))$ and so on. This wastes computational time! Is there a way that you can think of to speed this process up? Implement it and compare the time of your new function with `fact(n)` from part 1.
 **_HINT:_ It involves storing values.**
 
-3. Congratulations! You have now discovered [Dynamic Programming](https://en.wikipedia.org/wiki/Dynamic_programming), an extremely powerful algorithmic tool for solving complex problems that have [optimal substructure](https://en.wikipedia.org/wiki/Optimal_substructure).
+1. Congratulations! You have now discovered [Dynamic Programming](https://en.wikipedia.org/wiki/Dynamic_programming), an extremely powerful algorithmic tool for solving complex problems that have [optimal substructure](https://en.wikipedia.org/wiki/Optimal_substructure). What is the spatial complexity of your dynamic programming approach? Plot the runtimes of this algorithm versus the original one for the same range of values.
+**_HINT:_ Use Matplotlib to plot your values**
 
 ### 2) Floating Point Accuracy
 
@@ -273,3 +336,4 @@ def permute(A):
 ```
 
 Show that for any $n > 2$ all permutations are not equally probable.
+**_HINT:_ Something is not equally probable if the number of possible outcomes is not evenly divisible by the number of permutations**
