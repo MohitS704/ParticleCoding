@@ -1,240 +1,6 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Introduction</title>
-  <style>
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {   }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { color: #008000; } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { color: #008000; font-weight: bold; } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<header id="title-block-header">
-<h1 class="title">Introduction</h1>
-</header>
 <h1 id="introchap">Introduction</h1>
 <blockquote>
-<p><em>“Beautiful is better than ugly.<br />
+<p>“Beautiful is better than ugly.<br />
 Explicit is better than implicit.<br />
 Simple is better than complex.<br />
 Complex is better than complicated.<br />
@@ -246,111 +12,230 @@ Although practicality beats purity.<br />
 Errors should never pass silently.<br />
 Unless explicitly silenced.<br />
 In the face of ambiguity, refuse the temptation to guess.<br />
-There should be one– and preferably only one –obvious way to do it.<a
-href="https://en.wikipedia.org/wiki/Zen_of_Python#cite_note-7">[a]</a><br />
+There should be one– and preferably only one –obvious way to do it.<a href="https://en.wikipedia.org/wiki/Zen_of_Python#cite_note-7">[a]</a><br />
 Although that way may not be obvious at first unless you’re Dutch.<br />
 Now is better than never.<br />
-Although never is often better than right now.<a
-href="https://en.wikipedia.org/wiki/Zen_of_Python#cite_note-8">[b]</a><br />
+Although never is often better than right now.<a href="https://en.wikipedia.org/wiki/Zen_of_Python#cite_note-8">[b]</a><br />
 If the implementation is hard to explain, it’s a bad idea.<br />
 If the implementation is easy to explain, it may be a good idea.<br />
-Namespaces are one honking great idea – let’s do more of
-those!”</em><br />
-<a href="https://peps.python.org/pep-0020/"><em>PEP (Python Enhancement
-Proposal) 20 - the Zen of Python</em></a></p>
+Namespaces are one honking great idea – let’s do more of those!”<br />
+<a href="https://peps.python.org/pep-0020/"><em>PEP (Python Enhancement Proposal) 20 - the Zen of Python</em></a></p>
 </blockquote>
 <blockquote>
-<p><em>“We’ve heard computer science PhDs explain they were embarrassed
-to know Python ‘because it’s a language for idiots.’”</em>, <a
-href="https://modelviewculture.com/pieces/c-is-manly-python-is-for-n00bs-how-false-stereotypes-turn-into-technical-truths">Model
-View Culture</a></p>
+<p>“We’ve heard computer science PhDs explain they were embarrassed to know Python ‘because it’s a language for idiots.’”, <a href="https://modelviewculture.com/pieces/c-is-manly-python-is-for-n00bs-how-false-stereotypes-turn-into-technical-truths">Model View Culture</a></p>
 </blockquote>
 <blockquote>
-<p><em>“If you want a fancier language, C++ is absolutely the worst one
-to choose. If you want real high-level, pick one that has true
-high-level features like garbage collection or a good system
-integration, rather than something that lacks both the sparseness and
-straightforwardness of C, and doesn’t even have the high-level bindings
-to important concepts.”</em>,<a
-href="https://en.wikipedia.org/wiki/Linus_Torvalds">Linus
-Torvalds</a></p>
+<p>“The major cause of complaints is C++ undoubted success. As someone remarked: There are only two kinds of programming languages: those people always bitch about and those nobody uses.”, <a href="https://en.wikipedia.org/wiki/Bjarne_Stroustrup">Bjarne Stroustrup</a></p>
 </blockquote>
-<p><strong>OBJECTIVES</strong></p>
+<blockquote>
+<p>“If you want a fancier language, C++ is absolutely the worst one to choose. If you want real high-level, pick one that has true high-level features like garbage collection or a good system integration, rather than something that lacks both the sparseness and straightforwardness of C, and doesn’t even have the high-level bindings to important concepts.”,<a href="https://en.wikipedia.org/wiki/Linus_Torvalds">Linus Torvalds</a></p>
+</blockquote>
+<h2 id="objectives">OBJECTIVES</h2>
 <ul>
 <li>Briefly compare Python and C++
 <ul>
 <li>variable assignment</li>
 <li>function declarations</li>
 </ul></li>
-<li>Cover Recursion</li>
-<li><h2 id="complexity-classes">Complexity Classes</h2></li>
+<li>Recursion</li>
+<li>Complexity Classes
+<ul>
+<li>Time Complexity</li>
+</ul></li>
 </ul>
+<p>Before the text starts getting into the ins and outs of using python to do analyses - one must first have a good grasp of some basic ideas about how to look at problems in coding. This chapter serves as an introduction to the concepts relating to functions and their analysis.</p>
+<hr />
 <h2 id="resources-to-get-started">Resources to Get Started</h2>
-<p>If you do not know Python or C++, fear not! This text will not be
-covering <em>how</em> to code, I am assuming that you know <em>a
-priori</em> how to code in at least one of the two languages.</p>
-<h2 id="complexity-classes-1">Complexity Classes</h2>
-<blockquote>
-<p><em>“What is the most efficient way to sort a million 32-bit
-integers?”</em>, Eric Schmidt to Barack Obama, 2008</p>
-<p><em>“I think the bubble sort would be the wrong way to go.”</em>,
-Barack Obama.</p>
-</blockquote>
-<h2 id="exercises">Exercises</h2>
-<h3 id="recursion">1) Recursion</h3>
+<p>If you do not know Python or C++, fear not! This text will not be covering <em>how</em> to code, I am assuming that you know <em>a priori</em> how to code in Python, and at least know that C++ exists. There is just simply too much to cover in terms of programming knowledge to teach an entire programming language (there are bootcamps for that!). However, there are many resources available online to learn how to code - as well as your peers around you!</p>
+<h3 id="supplementary-jupyter-notebook">Supplementary Jupyter Notebook</h3>
+<p>Trying to break a coding language is one of the fastest ways to learn a programming language. For each chapter, there is a supplementary Jupyter Notebook designed for exploration of certain concepts covered in the chapter - it is my recommendation that you use them to just try things out!</p>
+<h2 id="starting-with-python">Starting with Python</h2>
+<h3 id="variable-assignment">Variable Assignment</h3>
+<!-- #### C++
+
+C++ has what is known as a statically typed language - the types are declared explicitly to assign variables. To assign a variable, there needs to be a type in front i.e.
+
+```cpp
+int x = 10;
+long double y = 1e6;
+string z = "HELLO"
+x = "I CAN'T DO THIS"; //This will break. The string you are trying to assign it to doesn't exist.
+``` -->
+<!-- #### Python -->
+<p>In Python, variables can take any form that you would like. This isn’t great for documentation purposes, but there are ways to document types without being as strict as C++. Similarly, in Python, you can “unpack” variables from iterable quantities, which is also shown below:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1">x <span class="op">=</span> <span class="dv">10</span></a>
+<a class="sourceLine" id="cb1-2" title="2">x <span class="op">=</span> <span class="fl">1e6</span> <span class="co">#This is how you do scientific notation in python</span></a>
+<a class="sourceLine" id="cb1-3" title="3">x <span class="op">=</span> <span class="st">&quot;HELLO&quot;</span> <span class="co">#This code will work fine - python does not do typing like C++ does - which is one reason it&#39;s so flexible.</span></a>
+<a class="sourceLine" id="cb1-4" title="4">x, y, z <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb1-5" title="5">(w, x), (y, z) <span class="op">=</span> [(<span class="dv">0</span>,<span class="dv">1</span>), (<span class="dv">2</span>,<span class="dv">3</span>)] <span class="co">#Here the extra parentheses are needed, as the list only has 2 items, and without the parentheses to evaluate the pairs separately, Python would expect 4 items in the list and throw an error.</span></a></code></pre></div>
+<h3 id="functions">Functions</h3>
+<p>Functions in coding are similar to functions in math - they take an input and (sometimes) return an output. Imagine when you see a function that you are replacing the function call with its return value. Functions are one of the most useful things when coding - they allow someone to do something similar over and over again without having to rewrite nearly anything!</p>
+<!-- ### C++
+
+Similar to variables, functions _need_ to have types in C++. This becomes very tricky when functions start returning complex values like datatypes or arrays without explicit sizes, but it's nice to know what a function will return with certainty (if a function does not return anything its type will be `void`). Similarly, functions in C++ can be _overloaded._ What this means is you can have the same function with a different signature, and C++ will know it's a different function. This is how you can get C++ to do the same thing to different data types, i.e.:
+
+```cpp
+void square(double &x){ //here a reference to x is being passed, so x will be changed from where you declared it
+    x *= x;
+}
+double square(double x){
+    return x*x;
+}
+int square(double x){
+    return (int)(x*x); //Here the result is cast to be an integer, and even though the function input is the same, C++ will know it's a different function. 
+}
+```
+
+### Python -->
+<p>Functions in Python are not constrained by many limitations. They need to be defined, and that is really all it is.</p>
+<h3 id="useful-data-structures">Useful Data Structures</h3>
+<p>TODO: cover lists, dictionaries, maps, ranges</p>
+<h3 id="for-and-while-loops">For and While Loops</h3>
+<h2 id="recursion">Recursion</h2>
+<p>Recursion in coding is when a function calls itself. Recursive functions need 2 things to really work:</p>
 <ol type="1">
-<li><p>Write a simple function called <code>fact(n)</code> that
-calculates the Fibonacci numbers - one in C++ and one in Python -
-recursively. Is there a difference in the runtime between n=20 and n=50?
-<em><strong>HINT:</strong> What is/are the base case(s) of the Fibonacci
-Sequence?</em></p></li>
-<li><p>One of the major drawbacks to basic recursion is that values have
-to calculated repeatedly. For instance, in the Fibonacci sequence, <span
-class="math inline"><em>F</em><em>i</em><em>b</em><em>o</em><em>n</em><em>a</em><em>c</em><em>c</em><em>i</em>(<em>n</em>) = <em>F</em><em>i</em><em>b</em><em>o</em><em>n</em><em>a</em><em>c</em><em>c</em><em>i</em>(<em>n</em>−1) + <em>F</em><em>i</em><em>b</em><em>o</em><em>n</em><em>a</em><em>c</em><em>c</em><em>i</em>(<em>n</em>−2) = (<em>F</em><em>i</em><em>b</em><em>o</em><em>n</em><em>a</em><em>c</em><em>c</em><em>i</em>(<em>n</em>−2)+<em>F</em><em>i</em><em>b</em><em>o</em><em>n</em><em>a</em><em>c</em><em>c</em><em>i</em>(<em>n</em>−3)) + (<em>F</em><em>i</em><em>b</em><em>o</em><em>n</em><em>a</em><em>c</em><em>c</em><em>i</em>(<em>n</em>−3)+<em>F</em><em>i</em><em>b</em><em>o</em><em>n</em><em>a</em><em>c</em><em>c</em><em>i</em>(<em>n</em>−4))</span>
-and so on. This wastes computational time! Is there a way that you can
-think of to speed this process up? <em><strong>HINT:</strong> It
-involves storing values.</em></p></li>
-<li><p>Congratulations! You have now discovered <a
-href="https://en.wikipedia.org/wiki/Dynamic_programming">Dynamic
-Programming</a>, an extremely powerful algorithmic tool for solving
-complex problems that have <a
-href="https://en.wikipedia.org/wiki/Optimal_substructure">optimal
-substructure</a>.</p></li>
+<li><p>Basecase(s).</p>
+<p>Basecases are where the result for some “base” value that the recursive function works down to is a concrete answer. An example of this would be the n=0 and n=1 case of the Fibonacci Sequence.</p></li>
+<li><p>A shrinking size.</p>
+<p>This one might be more “obvious,” but it’s the cause of many problems when dealing with recursion. To go back to the Fibonacci Sequence, the solution to <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?F%28n%29" alt="F(n)" title="F(n)" /> is <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?F%28n-1%29%20%2B%20F%28n-2%29" alt="F(n-1) + F(n-2)" title="F(n-1) + F(n-2)" />, both of which are inputs smaller than n which work their way down to the base case.</p></li>
+</ol>
+<p>Recursive functions need these two aspects since the size of the problem must keep shrinking down to a known quantity - otherwise recursion will continue infinitely. Some examples of recursive functions are placed in the supplementary Jupyter Notebook.</p>
+<h2 id="documenting-functions">Documenting Functions</h2>
+<p>There are ways to document code in both <a href="https://developer.lsst.io/cpp/api-docs.html">C++</a> and <a href="https://numpydoc.readthedocs.io/en/latest/format.html">Python</a>. These methods are very important, especially so with Python, since there isn’t any type information built into the code! One of the main goals of this course will be to hammer in the necessity of documentation into your skulls!</p>
+<h2 id="complexity-classes">Complexity Classes</h2>
+<blockquote>
+<p><em>“What is the most efficient way to sort a million 32-bit integers?”</em>, Eric Schmidt to Barack Obama, 2008</p>
+<p><em>“I think the bubble sort would be the wrong way to go.”</em>, Barack Obama.</p>
+</blockquote>
+<p>Computational complexity classes are a sets of computational problems of “<a href="https://en.wikipedia.org/wiki/Complexity_class">related resource-based complexity</a>.” This is a fancy way of saying that problems within the same complexity class take approximately the same time/memory asympototically. This is the basis of large tenets of theoretical computer science, and much work has been done on the subject over the years, with the most famous being the famous <a href="https://www.explainxkcd.com/wiki/index.php/287:_NP-Complete">P=NP</a> problem, which asks whether the two complexity classes can be reduced to one another.</p>
+<figure>
+<img src="https://en.wikipedia.org/wiki/Complexity_class#/media/File:Complexity_subsets_pspace.svg" alt="A representation of the relationships between several important complexity classes - courtesy of Wikipedia" /><figcaption>A representation of the relationships between several important complexity classes - courtesy of Wikipedia</figcaption>
+</figure>
+<h3 id="time-complexity">Time Complexity</h3>
+<figure>
+<img src="https://en.wikipedia.org/wiki/Time_complexity#/media/File:Comparison_computational_complexity.svg" alt="Graphs of functions commonly used in the analysis of algorithms, showing the number of operations N as the result of input size n for each function - courtesy of Wikipedia" /><figcaption>Graphs of functions commonly used in the analysis of algorithms, showing the number of operations N as the result of input size n for each function - courtesy of Wikipedia</figcaption>
+</figure>
+<p>Of course, we will not be discussing these classes in great detail - this is not a <a href="https://introtcs.org/public/index.html">theoretical computer science</a> text after all! However, what we will be discussing is <em>time</em> complexity - as speed should always be a major factor when thinking about how to write code. Time complexity describes the amount of computer time it takes to run an algorithm - with each “operation” taken to be a <em>basic</em> computational operation (such as addition, subtraction, list indexing, etc.). Other operations like insertion and deletion are not basic operations, and in fact often have runtimes that are nontrivial.</p>
+<h4 id="upper-bounds-on-time">Upper Bounds on Time</h4>
+<p>Since running times can vary wildly by input-size, it is often commonplace to consider the worst-case runtime of a function or an algorithm. Similarly, it’s also standard practice to look at asympotic behavior of a given algorithm - this means looking at large input sizes n - such that the difference between something taking 2n time and 16n time isn’t really that large of a difference when dealing with large input sizes when compared with something like <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clog%28n%29" alt="\log(n)" title="\log(n)" /> or <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?n%5E2" alt="n^2" title="n^2" /> time. Placing an upper bound on a given algorithm is given by something called <a href="https://en.wikipedia.org/wiki/Big_O_notation">“Big-O”</a> notation, which is formally defined as such:</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20f%28n%29%20%5Cin%20%5Cmathcal%7BO%7D%5Cleft%28g%28n%29%5Cright%29%20%5Cimplies%20%5Cleft%7Cf%28n%29%5Cright%7C%20%5Cleq%20c%20%5Ccdot%20g%28n%29%20%5Cforall%20n%20%5Cgeq%20n_0%20%5Cin%20%5Cmathbb%7BR%7D%20" alt=" f(n) \in \mathcal{O}\left(g(n)\right) \implies \left|f(n)\right| \leq c \cdot g(n) \forall n \geq n_0 \in \mathbb{R} " title=" f(n) \in \mathcal{O}\left(g(n)\right) \implies \left|f(n)\right| \leq c \cdot g(n) \forall n \geq n_0 \in \mathbb{R} " /><br /></p>
+<p>This is a very formal way of stating that if you can find a function that is greater than or equal to your runtime (your algorthm’s time complexity function “function”) for all values of n greater than a some number times any finite constant c, then your function is in <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BO%7D%28g%28n%29%29" alt="\mathcal{O}(g(n))" title="\mathcal{O}(g(n))" />.</p>
+<p>There’s a similar notation known as <a href="https://en.wikipedia.org/wiki/Big_O_notation#Related_asymptotic_notations">“Little-o”</a> notation - which is for when something is <em>strictly</em> less than a given function - and the definition changes slightly:</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20f%28n%29%20%5Cin%20%5Cmathcal%7Bo%7D%5Cleft%28g%28n%29%5Cright%29%20%5Cimplies%20%5Cleft%7Cf%28n%29%5Cright%7C%20%5Cleq%20c%20%5Ccdot%20g%28n%29%20%5Cforall%20n%20%5Cgeq%20n_0%20%5Cin%20%5Cmathbb%7BR%7D%2C%20c%20%3E%200%20" alt=" f(n) \in \mathcal{o}\left(g(n)\right) \implies \left|f(n)\right| \leq c \cdot g(n) \forall n \geq n_0 \in \mathbb{R}, c &gt; 0 " title=" f(n) \in \mathcal{o}\left(g(n)\right) \implies \left|f(n)\right| \leq c \cdot g(n) \forall n \geq n_0 \in \mathbb{R}, c &gt; 0 " /><br /> There is also a definition for Little-o that involves limits that may be more useful at times:</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20f%28n%29%20%5Cin%20%5Cmathcal%7Bo%7D%5Cleft%28g%28n%29%5Cright%29%20%5Cimplies%20%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%20%5Cfrac%7Bf%28n%29%7D%7Bg%28n%29%7D%20%3D%200%20" alt=" f(n) \in \mathcal{o}\left(g(n)\right) \implies \lim_{n\rightarrow\infty} \frac{f(n)}{g(n)} = 0 " title=" f(n) \in \mathcal{o}\left(g(n)\right) \implies \lim_{n\rightarrow\infty} \frac{f(n)}{g(n)} = 0 " /><br /></p>
+<p>The difference here is that while Big-O has to be true for at least some constant c, Little-o must hold for every possible positive constant. Little-o then makes a stronger statement about the time complexity - every function <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cin%20%5Cmathcal%7Bo%7D%5Cleft%28g%28n%29%5Cright%29" alt="\in \mathcal{o}\left(g(n)\right)" title="\in \mathcal{o}\left(g(n)\right)" /> is also <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cin%20%5Cmathcal%7BO%7D%5Cleft%28g%28n%29%5Cright%29" alt="\in \mathcal{O}\left(g(n)\right)" title="\in \mathcal{O}\left(g(n)\right)" />, however the other way around is not necessarily true (think squares and rectangles!).</p>
+<h4 id="lower-bounds-on-time">Lower Bounds on Time</h4>
+<p>Bounding the time taken by something on the lower end is much less useful, except when it is required to prove that something takes a long time. The notation for these bounds are “Big-Omega” and “Little-Omega”, respectively, and are analogs to their upper bound counterparts. This is evidenced by their definitions:</p>
+<ul>
+<li><p>Big-Omega $ f(n) (g(n)) |f(n)| c g(n) n n_0  $</p></li>
+<li><p>Little-Omega $ \begin{aligned} f(n) (g(n)) &amp;|f(n)| c g(n) n n_0 , c &gt; 0 \ f(n) (g(n)) &amp;_{n}  =  \end{aligned} $</p></li>
+</ul>
+<h4 id="tight-bounds-on-time">Tight Bounds on Time</h4>
+<p>The real usefulness of a lower bound is when there’s what’s called a tight bound, or a “Big-Theta” bound, on a process. Tight bounds are useful since Big-O and Big-Omega bounds can be really useless sometimes (i.e. do I really need a notation to tell me that <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?n%5E%7B1%5Ctimes%2010%5E6%7D%20%3E%20%5Clog%28n%29" alt="n^{1\times 10^6} &gt; \log(n)" title="n^{1\times 10^6} &gt; \log(n)" />?) even though the may technically fall into bounds. The definition of Big-Theta relies on the definitions for both Big-Omega and Big-O bounds, as the definition is as follows:</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?f%28n%29%20%5Cin%20%5Cmathcal%7B%5CTheta%7D%5Cleft%28g%28n%29%5Cright%29%20%5Cimplies%20f%28n%29%20%5Cin%20%5Cmathcal%7B%5COmega%7D%5Cleft%28g%28n%29%5Cright%29%20%5CAnd%20f%28n%29%20%5Cin%20%5Cmathcal%7BO%7D%5Cleft%28g%28n%29%5Cright%29" alt="f(n) \in \mathcal{\Theta}\left(g(n)\right) \implies f(n) \in \mathcal{\Omega}\left(g(n)\right) \And f(n) \in \mathcal{O}\left(g(n)\right)" title="f(n) \in \mathcal{\Theta}\left(g(n)\right) \implies f(n) \in \mathcal{\Omega}\left(g(n)\right) \And f(n) \in \mathcal{O}\left(g(n)\right)" /><br /></p>
+<p>This means that the <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?f%28n%29" alt="f(n)" title="f(n)" /> is simultaneously <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cgeq" alt="\geq" title="\geq" /> and <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cleq" alt="\leq" title="\leq" /> <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?g%28n%29" alt="g(n)" title="g(n)" /> for a given <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?g%28n%29" alt="g(n)" title="g(n)" />, or that they are in the same complexity class! Big-Theta bounds are useful for stating exactly what time complexity class a process is - as it doesn’t suffer from the possible overly-generous bounds that are possible with Big-O or Big-Omega bounds.</p>
+<h4 id="examples">Examples</h4>
+<ul>
+<li>Is <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?n%5E2%20%5Cin%20%5Cmathcal%7B%5CTheta%7D%5Cleft%28n%5E2%5Cright%29" alt="n^2 \in \mathcal{\Theta}\left(n^2\right)" title="n^2 \in \mathcal{\Theta}\left(n^2\right)" />? $
+<br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cbegin%7Baligned%7D%0A%7Cn%5E2%7C%20%26%5Coverset%7B%3F%7D%7B%5Cleq%7D%20c%20%5Ccdot%20n%5E2%5C%5C%0A1%20%26%5Cleq%20c%20%5Ctext%7B%20for%20some%20choice%20of%20c%20%7D%20%5Cgeq%201%5C%5C%0A%26%5Ctherefore%20n%5E2%20%5Cin%20%5Cmathcal%7BO%7D%5Cleft%28n%5E2%5Cright%29%5C%5C%0A%5C%5C%0A%7Cn%5E2%7C%20%26%5Coverset%7B%3F%7D%7B%5Cgeq%7D%20c%20%5Ccdot%20n%5E2%5C%5C%0A1%20%26%5Cgeq%20c%20%5Ctext%7B%20for%20some%20choice%20of%20c%7D%20%5Cleq%201%5C%5C%0A%26%5Ctherefore%20n%5E2%20%5Cin%20%5Cmathcal%7B%5COmega%7D%5Cleft%28n%5E2%5Cright%29%5C%5C%0A%5Cend%7Baligned%7D" alt="\begin{aligned}
+|n^2| &amp;\overset{?}{\leq} c \cdot n^2\\
+1 &amp;\leq c \text{ for some choice of c } \geq 1\\
+&amp;\therefore n^2 \in \mathcal{O}\left(n^2\right)\\
+\\
+|n^2| &amp;\overset{?}{\geq} c \cdot n^2\\
+1 &amp;\geq c \text{ for some choice of c} \leq 1\\
+&amp;\therefore n^2 \in \mathcal{\Omega}\left(n^2\right)\\
+\end{aligned}" title="\begin{aligned}
+|n^2| &amp;\overset{?}{\leq} c \cdot n^2\\
+1 &amp;\leq c \text{ for some choice of c } \geq 1\\
+&amp;\therefore n^2 \in \mathcal{O}\left(n^2\right)\\
+\\
+|n^2| &amp;\overset{?}{\geq} c \cdot n^2\\
+1 &amp;\geq c \text{ for some choice of c} \leq 1\\
+&amp;\therefore n^2 \in \mathcal{\Omega}\left(n^2\right)\\
+\end{aligned}" /><br />
+<p>$ Since <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?n%5E2" alt="n^2" title="n^2" /> is in both bounds, <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?n%5E2%20%5Cin%20%5Cmathcal%7B%5CTheta%7D%5Cleft%28n%5E2%5Cright%29" alt="n^2 \in \mathcal{\Theta}\left(n^2\right)" title="n^2 \in \mathcal{\Theta}\left(n^2\right)" />.</p></li>
+<li><p>Is <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clog%28n%29%20%5Cin%20%5Cmathcal%7Bo%7D%5Cleft%28n%5E%5Cepsilon%5Cright%29" alt="\log(n) \in \mathcal{o}\left(n^\epsilon\right)" title="\log(n) \in \mathcal{o}\left(n^\epsilon\right)" />, where <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cepsilon" alt="\epsilon" title="\epsilon" /> is any real number &gt; 0? $ \begin{aligned} <em>{n} &amp;= 0 &gt; 0 (n) (n^) &gt; 0\ L.H.S.: &amp;</em>{n}\ &amp;= <em>{n} \ &amp;&lt; </em>{n} \ &amp;= _{n}  = 0\ &amp;(n) (n^) &gt; 0 \end{aligned} $</p></li>
+</ul>
+<h4 id="determining-time-complexity">Determining Time Complexity</h4>
+<p>So a bunch of math stuff has been convered, but how does someone really tell when something is a certain time complexity? Well, there are a few simple ways. Imagine giving your algorithm some input of size n, and think about how many times your algorithm goes through those elements. For example, if there was some code that looked like this</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</a>
+<a class="sourceLine" id="cb2-2" title="2">  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n):</a>
+<a class="sourceLine" id="cb2-3" title="3">    do_something()</a></code></pre></div>
+<p>it would be a process that takes <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cmathcal%7B%5CTheta%7D%28n%5E2%29" alt="\mathcal{\Theta}(n^2)" title="\mathcal{\Theta}(n^2)" /> time. It takes practice to develop an intuition for it, but it’s best to think about how many times something is computed over in the worst case to judge the runtime. For instance, in the example above, a nested for loop means that there are n operations done n times, making for a runtime of <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?n%5E2" alt="n^2" title="n^2" />.</p>
+<p>There are other analyses of code timing, such as <a href="https://en.wikipedia.org/wiki/Amortized_analysis">amortized</a> time and <a href="https://en.wikipedia.org/wiki/Average-case_complexity">average</a> time, but they will not be covered in this text. However, should algorithm analysis prove to be something you enjoy, please look into it! It’s very interesting stuff!</p>
+<p>If you’d like more information on determining time complexity in a real and applicable way, this <a href="https://stackoverflow.com/questions/3255/big-o-how-do-you-calculate-approximate-it">Stack Overflow</a> post from 2008 is a really good starting point.</p>
+<h3 id="space-complexity">Space Complexity</h3>
+<p>Much like time complexity, there is also space complexity. The categorizations are <em>exactly</em> the same as the time complexity bounds (Big-O, Big-Omega, Big-Theta, etc.), however this deals with the amount of memory required for an algorithm. For example - using a <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?n%5Ctimes%20n" alt="n\times n" title="n\times n" /> sized cartesian grid to simulate something (like maybe a Boundary-Value Problem from Electrodynamics) - takes <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cmathcal%7B%5CTheta%7D%5Cleft%28n%5E2%5Cright%29" alt="\mathcal{\Theta}\left(n^2\right)" title="\mathcal{\Theta}\left(n^2\right)" /> memory. While not used as often as time complexity in everyday analysis - especially since space has become more plentiful on modern computers - it’s still a useful quantity to measure.</p>
+<h2 id="basic-recursive-analysis">Basic Recursive Analysis</h2>
+<h3 id="recursion-relations">Recursion Relations</h3>
+<p>Another useful tool to think about is to combine time complexity and recursion. These come in the form of recursion relations - and are expressed in functional form. Going back to the Fibonacci Sequence, the recurrence relation looks as such: <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20f%28n%29%20%3D%20f%28n%20-%201%29%20%2B%20f%28n%20-%202%29%20%2B%20%5Cmathcal%7BO%7D%5Cleft%281%5Cright%29%2C%20%5Cquad%20f%280%29%20%3D%20f%281%29%20%3D%201" alt=" f(n) = f(n - 1) + f(n - 2) + \mathcal{O}\left(1\right), \quad f(0) = f(1) = 1" title=" f(n) = f(n - 1) + f(n - 2) + \mathcal{O}\left(1\right), \quad f(0) = f(1) = 1" /><br /> What this equation means is that to calculate the function for a value n, the value at <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%28n%20-%201%29" alt="(n - 1)" title="(n - 1)" /> and <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%28n%20-%202%29" alt="(n - 2)" title="(n - 2)" /> must also be calculated, with one additional operation (addition). The basecases are then listing the time required for the basecases, such that an end is defined. Keep in mind that the numbers provided are not the answer to the function, but rather the amount of time it takes for the function to run, or the number of operations! As long as this time is within the same asympotic bound (i.e. all constant time steps go to 1) it is <em>usually</em> okay.</p>
+<p>For “divide and conquer” algorithms - which are useful tools for a wide range of problems - recursion relations may look more like the following: <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20f%28n%29%20%3D%20f%5Cleft%28%5Cfrac%7Bn%7D%7B2%7D%5Cright%29%20%2B%20g%28n%29%20" alt=" f(n) = f\left(\frac{n}{2}\right) + g(n) " title=" f(n) = f\left(\frac{n}{2}\right) + g(n) " /><br /> Where c is a constant. This recursion relation means that to calculate the function at a value of n, the value at <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cfrac%7Bn%7D%7B2%7D" alt="\frac{n}{2}" title="\frac{n}{2}" /> must also be calculated. The function g(n) is some function that indicates how many operations are done at every step of recursion - it can be anything ranging from a constant, like in the Fibonacci relation, to any other function like <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?n%21" alt="n!" title="n!" />.</p>
+<h3 id="determining-runtime">Determining Runtime</h3>
+<p>For recursion, it is a bit harder to think about the runtime in the same way that an iterative solution would. Imagine two functions that are used to print a list starting from a specific index, shown below:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">def</span> print_list_iterative(lst, i):</a>
+<a class="sourceLine" id="cb3-2" title="2">  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(i, <span class="bu">len</span>(lst)):</a>
+<a class="sourceLine" id="cb3-3" title="3">    <span class="bu">print</span>(lst[i])</a>
+<a class="sourceLine" id="cb3-4" title="4">  <span class="cf">return</span></a>
+<a class="sourceLine" id="cb3-5" title="5"></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="kw">def</span> print_list_recursive(lst, i):</a>
+<a class="sourceLine" id="cb3-7" title="7">  <span class="cf">if</span> i <span class="op">&gt;=</span> <span class="bu">len</span>(lst):</a>
+<a class="sourceLine" id="cb3-8" title="8">    <span class="cf">return</span></a>
+<a class="sourceLine" id="cb3-9" title="9">  <span class="bu">print</span>(lst[i]) <span class="co">#There is no need for an else statement since a function will end at the return statement</span></a>
+<a class="sourceLine" id="cb3-10" title="10">  print_list_recursion(lst, i<span class="op">+</span><span class="dv">1</span>) <span class="co">#notice how this is recursing &quot;upwards&quot; to a basecase. This is still okay since the sample space is decreasing!</span></a></code></pre></div>
+<p>Taking the size n to be the size of the list starting at index i, the runtime of the iterative function can be taken to be <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cmathcal%7B%5CTheta%7D%28n%29" alt="\mathcal{\Theta}(n)" title="\mathcal{\Theta}(n)" />. The recursive function also takes <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cmathcal%7B%5CTheta%7D%28n%29" alt="\mathcal{\Theta}(n)" title="\mathcal{\Theta}(n)" />, but it may be harder to see that. It helps to then think about the number of operations something has to do in the recurrence relation, which in this case is <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?f%28i%29%20%3D%20f%28i%2B1%29%20%2B%201%2C%20f%28n%29%20%3D%201" alt="f(i) = f(i+1) + 1, f(n) = 1" title="f(i) = f(i+1) + 1, f(n) = 1" />. Due to our definition of n, this function would take n recursion steps. Since each step takes 1 operation, the runtime looks as follows: <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?f%28i%29%20%3D%20%5Csum_%7Bi%7D%5En%201%20%3D%20n%20%5Cin%20%5Cmathcal%7B%5CTheta%7D%28n%29%20" alt="f(i) = \sum_{i}^n 1 = n \in \mathcal{\Theta}(n) " title="f(i) = \sum_{i}^n 1 = n \in \mathcal{\Theta}(n) " /><br /></p>
+<p>Another useful tool is the recursion tree. The Fibonacci function is actually <em>very</em> costly, with a runtime of about <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BO%7D%5Cleft%282%5En%5Cright%29" alt="\mathcal{O}\left(2^n\right)" title="\mathcal{O}\left(2^n\right)" /> - which is not obvious at all! Looking at the recursion tree, however, clues you into why this is the case: <img src="https://i.stack.imgur.com/QVSdv.png" alt="Recursion tree for the Fibonacci Sequence" /> For a Fibonacci tree, the height of the tree is proportional to the input number (aka the input “size”). There are on the order of <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?2%5En" alt="2^n" title="2^n" /> “leaves,” or endpoints, of this tree - meaning that the runtime is <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?2%5En%5Ctimes%201%20%3D%202%5En" alt="2^n\times 1 = 2^n" title="2^n\times 1 = 2^n" />! This is super slow!</p>
+<h3 id="the-master-theorem">The Master Theorem</h3>
+<p>The Master Theorem is a useful method for determining the runtime of recurrence relations that contain division of the sample space in some way. It is given by the following, for equations of the form <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?f%28n%29%20%3D%20a%20f%5Cleft%28%5Cfrac%7Bn%7D%7Bb%7D%5Cright%29%20%2B%20g%28n%29" alt="f(n) = a f\left(\frac{n}{b}\right) + g(n)" title="f(n) = a f\left(\frac{n}{b}\right) + g(n)" />:</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Bcases%7D%0A%20%20g%28n%29%20%5Cin%20%5Cmathcal%7B%5CTheta%7D%28n%5Ec%29%20%5Ctext%7B%20for%20some%20%7D%20c%20%3C%20%5Clog_b%28a%29%20%5Cqquad%20%5Cimplies%20f%28n%29%20%5Cin%20%5Cmathcal%7B%5CTheta%7D%28n%5E%7B%5Clog_b%28a%29%7D%29%5C%5C%0A%20%20g%28n%29%20%5Cin%20%5Cmathcal%7B%5CTheta%7D%28n%5Ec%29%20%5Ctext%7B%20for%20some%20%7D%20c%20%3D%20%5Clog_b%28a%29%20%5Cqquad%20%5Cimplies%20f%28n%29%20%5Cin%20%5Cmathcal%7B%5CTheta%7D%28n%5Ec%5Clog%28n%29%29%5C%5C%0A%20%20g%28n%29%20%5Cin%20%5Cmathcal%7B%5CTheta%7D%28n%5Ec%29%20%5Ctext%7B%20for%20some%20%7D%20c%20%3E%20%5Clog_b%28a%29%20%5Cqquad%20%5Cimplies%20f%28n%29%20%5Cin%20%5Cmathcal%7B%5CTheta%7D%28g%28n%29%29%0A%5Cend%7Bcases%7D%0A" alt="
+\begin{cases}
+  g(n) \in \mathcal{\Theta}(n^c) \text{ for some } c &lt; \log_b(a) \qquad \implies f(n) \in \mathcal{\Theta}(n^{\log_b(a)})\\
+  g(n) \in \mathcal{\Theta}(n^c) \text{ for some } c = \log_b(a) \qquad \implies f(n) \in \mathcal{\Theta}(n^c\log(n))\\
+  g(n) \in \mathcal{\Theta}(n^c) \text{ for some } c &gt; \log_b(a) \qquad \implies f(n) \in \mathcal{\Theta}(g(n))
+\end{cases}
+" title="
+\begin{cases}
+  g(n) \in \mathcal{\Theta}(n^c) \text{ for some } c &lt; \log_b(a) \qquad \implies f(n) \in \mathcal{\Theta}(n^{\log_b(a)})\\
+  g(n) \in \mathcal{\Theta}(n^c) \text{ for some } c = \log_b(a) \qquad \implies f(n) \in \mathcal{\Theta}(n^c\log(n))\\
+  g(n) \in \mathcal{\Theta}(n^c) \text{ for some } c &gt; \log_b(a) \qquad \implies f(n) \in \mathcal{\Theta}(g(n))
+\end{cases}
+" /><br /></p>
+<p>Each case is an illustration of what terms dominate in the calculations with regards to the recursion tree. In the first case, the actual calculations are relatively inexpensive, so the main contribution to the runtime is the number of divisions itself. In the second case, the constribution from the number of divisions and the contribution from the calculation at each level are about the same. In the third case, the calculation at each level dominates the runtime.</p>
+<h2 id="exercises">Exercises</h2>
+<h3 id="recursion-1">1) Recursion</h3>
+<ol type="1">
+<li><p>Write a simple function called <code>fib(n)</code> that calculates the Fibonacci numbers in Python recursively. Run your code over a range of values from 1 to 25, and try plotting the runtimes of each in a line. What does it look like? <strong><em>HINT:</em> What is/are the base case(s) of the Fibonacci Sequence?</strong></p></li>
+<li><p>One of the major drawbacks to basic recursion is that values have to calculated repeatedly. For instance, in the Fibonacci sequence, <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?Fibonacci%28n%29%20%3D%20Fibonacci%28n-1%29%20%2B%20Fibonacci%28n-2%29%3D%20%28Fibonacci%28n-2%29%20%2B%20Fibonacci%28n-3%29%29%20%2B%20%28Fibonacci%28n-3%29%20%2B%20Fibonacci%28n-4%29%29" alt="Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)= (Fibonacci(n-2) + Fibonacci(n-3)) + (Fibonacci(n-3) + Fibonacci(n-4))" title="Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)= (Fibonacci(n-2) + Fibonacci(n-3)) + (Fibonacci(n-3) + Fibonacci(n-4))" /> and so on. This wastes computational time! Is there a way that you can think of to speed this process up? Implement it and compare the time of your new function with <code>fact(n)</code> from part 1. <strong><em>HINT:</em> It involves storing values.</strong></p></li>
+<li><p>Congratulations! You have now discovered <a href="https://en.wikipedia.org/wiki/Dynamic_programming">Dynamic Programming</a>, an extremely powerful algorithmic tool for solving complex problems that have <a href="https://en.wikipedia.org/wiki/Optimal_substructure">optimal substructure</a>. What is the spatial complexity of your dynamic programming approach? Plot the runtimes of this algorithm versus the original one for the same range of values. <strong><em>HINT:</em> Use Matplotlib to plot your values</strong></p></li>
 </ol>
 <h3 id="floating-point-accuracy">2) Floating Point Accuracy</h3>
 <ol type="1">
-<li>The following code block calculates <span
-class="math inline"><em>e</em><sup>−<em>x</em></sup></span> via its
-Taylor Series (using the factorial function you created in Problem 1!),
-however it is wildly inaccurate even for small integers. The reason is
-that this code is not good for maintaining the accuracy of a floating
-point number. Try and improve upon it, and compare it to the value
-returned by <code>exp(-x)</code> (which is well optimized for
-accuracy!). <em><strong>HINT:</strong> Accuracy breaks down at really
-large numbers - maybe scaling down then scaling back up somehow would
-help? Similarly, try an iterative approach to calculating the sum, it’s
-much easier for C++ to do <span
-class="math inline"><em>x</em><sup>6</sup> * <em>x</em></span> than
-<span class="math inline"><em>x</em><sup>7</sup></span>.</em></li>
+<li>The following code block calculates <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?e%5E%7B-x%7D" alt="e^{-x}" title="e^{-x}" /> via its Taylor Series (using the factorial function you created in Problem 1!), however it is wildly inaccurate even for small integers. The reason is that this code is not good for maintaining the accuracy of a floating point number. Try and improve upon it, and compare it to the value returned by <code>exp(-x)</code> (which is well optimized for accuracy!). Afterwards, implement the C++ code below in Python, and notice how the same problem does <em>not</em> occur <strong><em>HINT:</em> Accuracy breaks down for really large numbers - maybe scaling down then scaling back up somehow would help? Similarly, try an iterative approach to calculating the sum, it’s much easier for C++ to do <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?x%5E6%2Ax" alt="x^6*x" title="x^6*x" /> than <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?x%5E7" alt="x^7" title="x^7" />.</strong></li>
 </ol>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="at">const</span> <span class="dt">int</span> MAXIT<span class="op">=</span><span class="dv">10000</span><span class="op">;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">const</span> <span class="dt">double</span> EPS<span class="op">=</span><span class="fl">1e-9</span><span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">long</span> <span class="dt">double</span> mexp<span class="op">(</span><span class="dt">double</span> x<span class="op">){</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">long</span> <span class="dt">double</span> value<span class="op">=</span><span class="fl">1.0</span><span class="op">;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> sign<span class="op">;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> n<span class="op">=</span><span class="dv">1</span><span class="op">;</span>n<span class="op">&lt;</span>MAXIT<span class="op">;</span>n<span class="op">++){</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>i<span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span><span class="op">){</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>      sign <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span><span class="op">{</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      sign <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">long</span> <span class="dt">double</span> term<span class="op">=</span>sign<span class="op">*</span>pow<span class="op">(</span>x<span class="op">,</span>n<span class="op">)/</span>fact<span class="op">(</span>n<span class="op">);</span> <span class="co">// This line is the issue!</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    value <span class="op">+=</span> term<span class="op">;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>fabs<span class="op">(</span>term<span class="op">/</span>value<span class="op">)</span> <span class="op">&lt;</span> EPS <span class="op">||</span> <span class="op">!</span>isfinite<span class="op">(</span>value<span class="op">)</span> <span class="op">)</span> <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> value<span class="op">;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<h3 id="section">3)</h3>
-</body>
-</html>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb4-1" title="1"><span class="at">const</span> <span class="dt">int</span> MAXIT=<span class="dv">10000</span>;</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="at">const</span> <span class="dt">double</span> EPS=<span class="fl">1e-9</span>;</a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="dt">long</span> <span class="dt">double</span> mexp(<span class="dt">double</span> x){</a>
+<a class="sourceLine" id="cb4-4" title="4">    <span class="dt">long</span> <span class="dt">double</span> value=<span class="fl">1.0</span>;</a>
+<a class="sourceLine" id="cb4-5" title="5">    <span class="dt">int</span> sign;</a>
+<a class="sourceLine" id="cb4-6" title="6">    <span class="cf">for</span> (<span class="dt">int</span> n=<span class="dv">1</span>;n&lt;MAXIT;n++){</a>
+<a class="sourceLine" id="cb4-7" title="7">        <span class="cf">if</span>(i%<span class="dv">2</span> == <span class="dv">0</span>){</a>
+<a class="sourceLine" id="cb4-8" title="8">            sign = <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb4-9" title="9">        } <span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb4-10" title="10">            sign = -<span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb4-11" title="11">        }</a>
+<a class="sourceLine" id="cb4-12" title="12">        <span class="dt">long</span> <span class="dt">double</span> term=sign*pow(x,n)/fact(n); <span class="co">// This line is the issue!</span></a>
+<a class="sourceLine" id="cb4-13" title="13">        value += term;</a>
+<a class="sourceLine" id="cb4-14" title="14">        <span class="cf">if</span> (fabs(term/value) &lt; EPS || !isfinite(value) ) <span class="cf">break</span>;</a>
+<a class="sourceLine" id="cb4-15" title="15">    }</a>
+<a class="sourceLine" id="cb4-16" title="16">    <span class="cf">return</span> value;</a>
+<a class="sourceLine" id="cb4-17" title="17">}</a></code></pre></div>
+<h3 id="algorithm-analysis">3) Algorithm Analysis</h3>
+<ol type="1">
+<li><p>Given a pair of positive integers a and n, provide pseudo-code for a function <code>eff_exp(a, n)</code> that computes <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?a%5En" alt="a^n" title="a^n" /> using only <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BO%7D%28%5Clog%28n%29%29" alt="\mathcal{O}(\log(n))" title="\mathcal{O}(\log(n))" /> multiplications. Prove that <code>eff_exp</code> <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cin%20%5Cmathcal%7BO%7D%28%5Clog%28n%29%29" alt="\in \mathcal{O}(\log(n))" title="\in \mathcal{O}(\log(n))" />. Assume that every operation (i.e. addition, multiplication) takes 1 “operation.”</p></li>
+<li><p>Consider the following code block that permutes an array A of size n (remembering that ranges in python are integer ranges from <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Bstart%2C%20end%29" alt="[start, end)" title="[start, end)" /> ):</p></li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">def</span> permute(A):</a>
+<a class="sourceLine" id="cb5-2" title="2">    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</a>
+<a class="sourceLine" id="cb5-3" title="3">        Swap(A[i], A[random.randrange(<span class="dv">0</span>,n)])</a>
+<a class="sourceLine" id="cb5-4" title="4">    <span class="cf">return</span> A</a></code></pre></div>
+<p>Show that for any <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?n%20%3E%202" alt="n &gt; 2" title="n &gt; 2" /> all permutations are not equally probable. <strong><em>HINT:</em> Something is not equally probable if the number of possible outcomes is not evenly divisible by the number of permutations</strong></p>
