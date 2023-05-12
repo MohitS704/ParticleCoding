@@ -106,11 +106,11 @@ There are ways to document code in both [C++](https://developer.lsst.io/cpp/api-
 
 Computational complexity classes are a sets of computational problems of "[related resource-based complexity](https://en.wikipedia.org/wiki/Complexity\_class)." This is a fancy way of saying that problems within the same complexity class take approximately the same time/memory asympototically. This is the basis of large tenets of theoretical computer science, and much work has been done on the subject over the years, with the most famous being the famous [P=NP](https://www.explainxkcd.com/wiki/index.php/287:\_NP-Complete) problem, which asks whether the two complexity classes can be reduced to one another.
 
-![A representation of the relationships between several important complexity classes - courtesy of Google Images](https://hyperspec.ai/wp-content/uploads/2023/01/3D7CAC80-4CF0-452A-81D5-8540D3C6C8CB.png)
+![A representation of the relationships between several important complexity classes - courtesy of Google Images](https://www.csc.liv.ac.uk/~ped/teachadmin/algor/pic19.gif)
 
 ### Time Complexity
 
-![Graphs of functions commonly used in the analysis of algorithms, showing the number of operations N as the result of input size n for each function - courtesy of Wikipedia](https://en.wikipedia.org/wiki/Time_complexity#/media/File:Comparison_computational_complexity.svg.png)
+![Graphs of functions commonly used in the analysis of algorithms, showing the number of operations N as the result of input size n for each function - courtesy of Google Images](https://hyperspec.ai/wp-content/uploads/2023/01/3D7CAC80-4CF0-452A-81D5-8540D3C6C8CB.png)
 
 Of course, we will not be discussing these classes in great detail - this is not a [theoretical computer science](https://introtcs.org/public/index.html) text after all! However, what we will be discussing is _time_ complexity - as speed should always be a major factor when thinking about how to write code. Time complexity describes the amount of computer time it takes to run an algorithm - with each "operation" taken to be a _basic_ computational operation (such as addition, subtraction, list indexing, etc.). Other operations like insertion and deletion are not basic operations, and in fact often have runtimes that are nontrivial.
 
