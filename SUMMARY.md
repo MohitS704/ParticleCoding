@@ -1,7 +1,6 @@
 # Table of contents
 
-* [ParticleCoding](README.md)
-* [Fortran](fortran.md)
-* [Introduction to Coding in Particle Physics (#introchapter)](index.md)
-* [Introduction](introduction.md)
+* [Introduction to Coding in Particle Physics (#introchapter)](README.md)
 * [Preface](preface.md)
+* [Introduction](introduction.md)
+* [Fortran](fortran.md)
