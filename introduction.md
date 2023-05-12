@@ -116,7 +116,8 @@ Of course, we will not be discussing these classes in great detail - this is not
 
 #### Upper Bounds on Time
 
-Since running times can vary wildly by input-size, it is often commonplace to consider the worst-case runtime of a function or an algorithm. Similarly, it's also standard practice to look at asympotic behavior of a given algorithm - this means looking at large input sizes n - such that the difference between something taking 2n time and 16n time isn't really that large of a difference when dealing with large input sizes when compared with something like $\log(n)$ or $n^2$ time. Placing an upper bound on a given algorithm is given by something called ["Big-O"](https://en.wikipedia.org/wiki/Big\_O\_notation) notation, which is formally defined as such:
+Since running times can vary wildly by input-size, it is often commonplace to consider the worst-case runtime of a function or an algorithm. Similarly, it's also standard practice to look at asympotic behavior of a given algorithm - this means looking at large input sizes n - such that the difference between something taking 2n time and 16n time isn't really that large of a difference when dealing with large input sizes when compared with something like
+$\log(n)$ or $n^2$ time. Placing an upper bound on a given algorithm is given by something called ["Big-O"](https://en.wikipedia.org/wiki/Big\_O\_notation) notation, which is formally defined as such:
 
 $$f(n) \in \mathcal{O}\left(g(n)\right) \implies \left|f(n)\right| \leq c \cdot g(n) \forall n \geq n_0 \in \mathbb{R}$$
 
@@ -124,7 +125,9 @@ This is a very formal way of stating that if you can find a function that is gre
 
 There's a similar notation known as ["Little-o"](https://en.wikipedia.org/wiki/Big\_O\_notation#Related\_asymptotic\_notations) notation - which is for when something is _strictly_ less than a given function - and the definition changes slightly:
 
-$$f(n) \in \mathcal{o}\left(g(n)\right) \implies \left|f(n)\right| \leq c \cdot g(n) \forall n \geq n_0 \in \mathbb{R}, c > 0$$ There is also a definition for Little-o that involves limits that may be more useful at times:
+$$f(n) \in \mathcal{o}\left(g(n)\right) \implies \left|f(n)\right| \leq c \cdot g(n) \forall n \geq n_0 \in \mathbb{R}, c > 0$$ 
+
+There is also a definition for Little-o that involves limits that may be more useful at times:
 
 $$f(n) \in \mathcal{o}\left(g(n)\right) \implies \lim_{n\rightarrow\infty} \frac{f(n)}{g(n)} = 0$$
 
@@ -134,8 +137,10 @@ The difference here is that while Big-O has to be true for at least some constan
 
 Bounding the time taken by something on the lower end is much less useful, except when it is required to prove that something takes a long time. The notation for these bounds are "Big-Omega" and "Little-Omega", respectively, and are analogs to their upper bound counterparts. This is evidenced by their definitions:
 
-* Big-Omega $ f(n) \in \mathcal{\Omega}\left(g(n)\right) \implies \left|f(n)\right| \geq c \cdot g(n) \forall n \geq n\_0 \in \mathbb{R} $
-* Little-Omega $ \begin{aligned} f(n) \in \mathcal{\omega}\left(g(n)\right) &\implies \left|f(n)\right| \geq c \cdot g(n) \forall n \geq n\_0 \in \mathbb{R}, c > 0 \ f(n) \in \mathcal{\omega}\left(g(n)\right) &\implies \lim\_{n\rightarrow\infty} \frac{f(n)}{g(n)} = \infty \end{aligned} $
+* Big-Omega
+  $$f(n) \in \mathcal{\Omega}\left(g(n)\right) \implies \left|f(n)\right| \geq c \cdot g(n) \forall n \geq n\_0 \in \mathbb{R}$$
+* Little-Omega
+  $$\begin{aligned} f(n) \in \mathcal{\omega}\left(g(n)\right) &\implies \left|f(n)\right| \geq c \cdot g(n) \forall n \geq n\_0 \in \mathbb{R}, c > 0 \ f(n) \in \mathcal{\omega}\left(g(n)\right) &\implies \lim\_{n\rightarrow\infty} \frac{f(n)}{g(n)} = \infty \end{aligned}$$
 
 #### Tight Bounds on Time
 
