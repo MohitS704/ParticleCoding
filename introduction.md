@@ -140,7 +140,8 @@ Bounding the time taken by something on the lower end is much less useful, excep
 * Big-Omega
   $$f(n) \in \mathcal{\Omega}\left(g(n)\right) \implies \left|f(n)\right| \geq c \cdot g(n) \forall n \geq n\_0 \in \mathbb{R}$$
 * Little-Omega
-  $$\begin{aligned} f(n) \in \mathcal{\omega}\left(g(n)\right) &\implies \left|f(n)\right| \geq c \cdot g(n) \forall n \geq n\_0 \in \mathbb{R}, c > 0 \ f(n) \in \mathcal{\omega}\left(g(n)\right) &\implies \lim\_{n\rightarrow\infty} \frac{f(n)}{g(n)} = \infty \end{aligned}$$
+  $$\begin{aligned} f(n) \in \mathcal{\omega}\left(g(n)\right) &\implies \left|f(n)\right| \geq c \cdot g(n) \forall n \geq n\_0 \in \mathbb{R}, c > 0 \\
+  f(n) \in \mathcal{\omega}\left(g(n)\right) &\implies \lim\_{n\rightarrow\infty} \frac{f(n)}{g(n)} = \infty \end{aligned}$$
 
 #### Tight Bounds on Time
 
