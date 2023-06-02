@@ -85,10 +85,10 @@ TODO: cover lists, dictionaries, maps, ranges
 
 Recursion in coding is when a function calls itself. Recursive functions need 2 things to really work:
 
-1.  Basecase(s).
+1. Basecase(s).
 
     Basecases are where the result for some "base" value that the recursive function works down to is a concrete answer. An example of this would be the n=0 and n=1 case of the Fibonacci Sequence.
-2.  A shrinking size.
+2. A shrinking size.
 
     This one might be more "obvious," but it's the cause of many problems when dealing with recursion. To go back to the Fibonacci Sequence, the solution to $F(n)$ is $F(n-1) + F(n-2)$, both of which are inputs smaller than n which work their way down to the base case.
 
@@ -125,7 +125,7 @@ This is a very formal way of stating that if you can find a function that is gre
 
 There's a similar notation known as ["Little-o"](https://en.wikipedia.org/wiki/Big\_O\_notation#Related\_asymptotic\_notations) notation - which is for when something is _strictly_ less than a given function - and the definition changes slightly:
 
-$$f(n) \in \mathcal{o}\left(g(n)\right) \implies \left|f(n)\right| \leq c \cdot g(n) \forall n \geq n_0 \in \mathbb{R}, c > 0$$ 
+$$f(n) \in \mathcal{o}\left(g(n)\right) \implies \left|f(n)\right| \leq c \cdot g(n) \forall n \geq n_0 \in \mathbb{R}, c > 0$$
 
 There is also a definition for Little-o that involves limits that may be more useful at times:
 
@@ -219,13 +219,13 @@ Each case is an illustration of what terms dominate in the calculations with reg
 
 ### 1) Recursion
 
-1. Write a simple function called `fib(n)` that calculates the Fibonacci numbers in Python recursively. Run your code over a range of values from 1 to 25, and try plotting the runtimes of each in a line. What does it look like? _**HINT:**_** What is/are the base case(s) of the Fibonacci Sequence?**
-2. One of the major drawbacks to basic recursion is that values have to calculated repeatedly. For instance, in the Fibonacci sequence, $Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)= (Fibonacci(n-2) + Fibonacci(n-3)) + (Fibonacci(n-3) + Fibonacci(n-4))$ and so on. This wastes computational time! Is there a way that you can think of to speed this process up? Implement it and compare the time of your new function with `fact(n)` from part 1. _**HINT:**_** It involves storing values.**
-3. Congratulations! You have now discovered [Dynamic Programming](https://en.wikipedia.org/wiki/Dynamic\_programming), an extremely powerful algorithmic tool for solving complex problems that have [optimal substructure](https://en.wikipedia.org/wiki/Optimal\_substructure). What is the spatial complexity of your dynamic programming approach? Plot the runtimes of this algorithm versus the original one for the same range of values. _**HINT:**_** Use Matplotlib to plot your values**
+1. Write a simple function called `fib(n)` that calculates the Fibonacci numbers in Python recursively. Run your code over a range of values from 1 to 25, and try plotting the runtimes of each in a line. What does it look like? _**HINT:**_**What is/are the base case(s) of the Fibonacci Sequence?**
+2. One of the major drawbacks to basic recursion is that values have to calculated repeatedly. For instance, in the Fibonacci sequence, $Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)= (Fibonacci(n-2) + Fibonacci(n-3)) + (Fibonacci(n-3) + Fibonacci(n-4))$ and so on. This wastes computational time! Is there a way that you can think of to speed this process up? Implement it and compare the time of your new function with `fact(n)` from part 1. _**HINT:**_**It involves storing values.**
+3. Congratulations! You have now discovered [Dynamic Programming](https://en.wikipedia.org/wiki/Dynamic\_programming), an extremely powerful algorithmic tool for solving complex problems that have [optimal substructure](https://en.wikipedia.org/wiki/Optimal\_substructure). What is the spatial complexity of your dynamic programming approach? Plot the runtimes of this algorithm versus the original one for the same range of values. _**HINT:**_**Use Matplotlib to plot your values**
 
 ### 2) Floating Point Accuracy
 
-1. The following code block calculates $e^{-x}$ via its Taylor Series (using the factorial function you created in Problem 1!), however it is wildly inaccurate even for small integers. The reason is that this code is not good for maintaining the accuracy of a floating point number. Try and improve upon it, and compare it to the value returned by `exp(-x)` (which is well optimized for accuracy!). Afterwards, implement the C++ code below in Python, and notice how the same problem does _not_ occur _**HINT:**_** Accuracy breaks down for really large numbers - maybe scaling down then scaling back up somehow would help? Similarly, try an iterative approach to calculating the sum, it's much easier for C++ to do $x^6\*x$ than $x^7$.**
+1. The following code block calculates $e^{-x}$ via its Taylor Series (using the factorial function you created in Problem 1!), however it is wildly inaccurate even for small integers. The reason is that this code is not good for maintaining the accuracy of a floating point number. Try and improve upon it, and compare it to the value returned by `exp(-x)` (which is well optimized for accuracy!). Afterwards, implement the C++ code below in Python, and notice how the same problem does _not_ occur _**HINT:**_**Accuracy breaks down for really large numbers - maybe scaling down then scaling back up somehow would help? Similarly, try an iterative approach to calculating the sum, it's much easier for C++ to do $x^6\*x$ than $x^7$.**
 
 ```cpp
 const int MAXIT=10000;
@@ -259,4 +259,4 @@ def permute(A):
     return A
 ```
 
-Show that for any $n > 2$ all permutations are not equally probable. _**HINT:**_** Something is not equally probable if the number of possible outcomes is not evenly divisible by the number of permutations**
+Show that for any $n > 2$ all permutations are not equally probable. _**HINT:**_**Something is not equally probable if the number of possible outcomes is not evenly divisible by the number of permutations**
