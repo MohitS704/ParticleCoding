@@ -5,8 +5,6 @@ chapternum: "p"
 geometry: margin=30mm
 ---
 
-# Preface {#prefacechapter}
-
 >_"Physics, which is one of the oldest academic disciplines, has had plenty of time to figure out a way to visit the year 4515 and see if humans are still around or have been taken over by a race of intelligent spiders, is broken into multiple branches including particle physics and astrophysics, neither of which has led to the construction of a time-traveling device so who gives a shit."_, [_The Onion Book of Known Knowledge_](https://mathijs.info/files/ebooks/onion.pdf), 2012.
 
 This course is intended to provide insight into how to manipulate large quantities of data similar to a particle physicist, and how to use the tools to do so. Now, as a PhD student who has yet to even pass his Graduate Board Oral Exam (GBO), you may think, "Is this schmuck even qualified to type these words??" I guess not really - but we all start somewhere. (Pro Tip: If you think I'm wholly unqualified to be writing this, you are probably right. _Please_ help me out by either suggesting material to add or revise, or write some stuff up to help me out!) Over the course of my PhD I hope to continue to update this text with sections about things that I _wish_ I had when I was learning to conduct analyses. This also involves pointing you to the people who can tell you about processes/packages better than I ever could - the developers themselves!
@@ -23,6 +21,16 @@ The educational goals will be to cover the following (and this will be updated a
 * Speed
   * Vectorization
   * Good Practices
+
+## Guiding Philosophy
+
+The guiding philosphy of this course is the same as the motto of the acclaimed satire publication, The Onion; _Tu Stultes Es_, or "You are Dumb." (Referenced in [Section 1 of the Argument](https://www.supremecourt.gov/DocketPDF/22/22-293/242292/20221003125252896_35295545_1-22.10.03%20-%20Novak-Parma%20-%20Onion%20Amicus%20Brief.pdf) of an Amicus Curae Brief to the Supreme Court of the United States).
+
+__This is not to mean that _you_, my dear reader, are dumb. You are not!__. It instead means that you should always _assume_ the worst understanding possible for any person reading your code, or in the machine that is processing your code. The specifity requirements of algorithms are often ridiculed in videos like [this](https://www.youtube.com/watch?v=Ct-lOOUqmyY), but they are very [useful](http://static.zerorobotics.mit.edu/docs/team-activities/ProgrammingPeanutButterAndJelly.pdf) tools to teach that programs need to be very specific and easy to understand!
+
+As scientists, code often needs to be shared, and oftentimes people who try to read and understand code lack the context that the developers had - good code should be written so that "even a caveman could do it." This is so that people who lack the background knowledge of the code can understand what can is done.
+
+Going back to the guiding philosphy, this means that code will be approached as something that can and should be deconstructed down to its basic components, with a plethora of comments and programming styles that favor readability and ease-of-access over marginal gains in performance (of course, a decline in readability is inevitable with operations like vectorization, but that is a trade-off that you should be more than willing to make due to the performance difference). I've found that this approach to coding has netted the most benefits, as people can come back to code and continue working immediately, rather than spend hours trying to remember exactly what was done.
 
 ## Usefulness to Physicists
 

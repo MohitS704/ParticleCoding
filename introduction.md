@@ -5,8 +5,6 @@ chapternum: '0'
 numbersections: true
 ---
 
-# Introduction
-
 > "Beautiful is better than ugly.\
 > Explicit is better than implicit.\
 > Simple is better than complex.\
@@ -19,10 +17,10 @@ numbersections: true
 > Errors should never pass silently.\
 > Unless explicitly silenced.\
 > In the face of ambiguity, refuse the temptation to guess.\
-> There should be one– and preferably only one –obvious way to do it.[\[a\]](https://en.wikipedia.org/wiki/Zen\_of\_Python#cite\_note-7)\
+> There should be one– and preferably only one –obvious way to do it.
 > Although that way may not be obvious at first unless you're Dutch.\
 > Now is better than never.\
-> Although never is often better than right now.[\[b\]](https://en.wikipedia.org/wiki/Zen\_of\_Python#cite\_note-8)\
+> Although never is often better than right now.
 > If the implementation is hard to explain, it's a bad idea.\
 > If the implementation is easy to explain, it may be a good idea.\
 > Namespaces are one honking great idea – let's do more of those!"\
@@ -69,17 +67,124 @@ x, y, z = [1,2,3]
 (w, x), (y, z) = [(0,1), (2,3)] #Here the extra parentheses are needed, as the list only has 2 items, and without the parentheses to evaluate the pairs separately, Python would expect 4 items in the list and throw an error.
 ```
 
+In keeping with our motto - try and make variable names useful! While it's certainly entertaining to make variable names like "oops", "fucky_wucky", or "my_professor_is_a_dingbat", it's much more useful to you and any other debuggers if the variable names are something like "error_checker", "velocity_list", or "phi1."
+
+And another thing, try not to make variable names the same as types For example, don't make a list with the name list, that's a type! Python will get confused as to whether you're referring to the type or the variable __- remember - _Tu Stultes Es___.
+
 ### Functions
 
 Functions in coding are similar to functions in math - they take an input and (sometimes) return an output. Imagine when you see a function that you are replacing the function call with its return value. Functions are one of the most useful things when coding - they allow someone to do something similar over and over again without having to rewrite nearly anything!
 
-Functions in Python are not constrained by many limitations. They need to be defined, and that is really all it is.
-
-### Useful Data Structures
-
-TODO: cover lists, dictionaries, maps, ranges
+Functions in Python are not constrained by many limitations. They need to be defined, and that is really all it is. Why do I say this? Well, in Python, [everything is an object](https://www.pythonmorsels.com/everything-is-an-object/), so anything can be provided as input to a function - even other functions! When would this be useful? Well, let's say you wanted to time a bunch of functions with repetitive code. You _could_ 
 
 ### For and While Loops
+
+#### For Loop Basics
+
+For loops in Python are actually all what are known as "for each loops." The basic for loop is just a repeating structure that goes between set values. For instance, a for loop in C++ might look like this:
+
+```C++
+for(int i = 0; i < 10; i++){
+  cout << i << endl;
+}
+```
+
+This code block is told to start from an integer initialized at 0, and add 1 to i at each iteration. The loop will keep doing this until the ending condition is no longer satisfied - once $i > 10$ - the loop will end. However, _there is no equivalent in Python_! All loops in Python loop over iterable values. For instance, to do the same thing as the C++ code, you can do the following:
+
+```python
+for i in range(10):
+  print(i)
+
+#Now let's see an alternate formulation
+x = range(10)
+for i in x:
+  print(i)
+
+#The two things above are functionally the same as what's below
+x = [0,1,2,3,4,5,6,7,8,9]
+for i in x:
+  print(i)
+```
+
+Let's deconstruct this. This loop is going to move one at a time through every item in `range(10)`, and set i to that value each time. What `range(10)` does is makes an iterable "range" object containing the numbers 0 through 9, and the for loop will go through that object and set to i at each step. 
+
+#### More Complication with For Loops
+
+Let's now have a more complicated setup. Let's say we wanted to print something as well as its index in a for loop. Here are two ways to do that, one in C++ and one in Python.
+
+```C++
+x = [1,2,3]
+for(int i = 0; i < 3; i++){
+  cout << x[i] << " at index " << i << endl;
+}
+```
+
+```python
+x = [1,2,3]
+
+for i in range(len(x)):
+  print(x[i], "at index", i)
+
+for n, i in enumerate(x): #This is a better and more "pythonic" way of doing things
+  print(i, "at index", n)
+```
+
+_You can unpack variables in python loops!_ Just like we did earlier when assigning variables, assigning temporary variables in for loops works the same. If you were to `print(enumerate(x))`, you would see something that looks like `((0,1), (1,2), (2,3))`, where the first entry is the index the second entry the value at that index. What the for loop is doing at each step is `n, i = (index, value)` and keeping those the same. 
+
+This leads us to the `zip` command. What zip does is it creates tuples you can unpack between two different iterables. Let's say you have two lists you want to iterate over at the same time that are (importantly!) the same length. There are three ways of doing this well, shown below:
+
+```python
+x = [1,2,3]
+y = ["one", "two", "three"]
+
+#These will print 1 = one, 2 = two, etc.
+
+for i in range(len(x)): #This has nested functions in one line. Might be easy to read, but kind of ugly!
+  print(x[i], "=", y[i])
+
+for n, xi in enumerate(x): #Mixing the usage of indices and loop iteration is confusing! Which one is which?
+  print(xi, "=", y[n])
+
+for xi,yi in zip(x,y): #easy to understand and type out!
+  print(xi, "=", yi) 
+```
+
+The same rules apply here as they did for variable assignment! Always take advantage of the way that Python constructs loops so that you don't have to access iterables all the time!
+
+#### While Loops
+
+There's no real difference between while loops in C++ and in Python. A while loop keeps going until it is satisfied. Let's look at an example:
+
+```C++
+int i = 0;
+while(i < 10){
+  cout << i << endl;
+  i++;
+}
+```
+
+```python
+i = 0
+while i < 10:
+  print(i)
+  i += 1
+```
+
+Notice how you _have_ to iterate i each time the loop progresses. Without this, the condition will never be met, and the while loop will run forever! It is simlarly bad practice to write a while loop that runs forever then breaks manually, such as:
+
+```python
+while True:
+  some_function()
+  #If this was far down in the while loop (say if some_function() was 1000 lines long), it would be hard to find!
+  if condition: 
+    break #blegh!
+
+while not condition: #This is a much better way of doing things
+  # the stop condition is located at the while loop, making it easy to find!
+  some_function()
+```
+
+While both approaches are technically valid, the second one is bad practice! Should your break statement be somewhere that's not obvious, it could be hard to find/understand! While it might take some overhead, try to always have the primary condition be in the argument of the while loop. Always try to make sure that conditions are explicitly stated, as it both helps readability and bugfixing abilities should things go wrong with you loops!
 
 ## Recursion
 
@@ -153,8 +258,16 @@ This means that the $f(n)$ is simultaneously $\geq$ and $\leq$ $g(n)$ for a give
 
 #### Examples
 
-* Is $n^2 \in \mathcal{\Theta}\left(n^2\right)$? $ \begin{aligned} |n^2| &\overset{?}{\leq} c \cdot n^2\ 1 &\leq c \text{ for some choice of c } \geq 1\ &\therefore n^2 \in \mathcal{O}\left(n^2\right)\ \ |n^2| &\overset{?}{\geq} c \cdot n^2\ 1 &\geq c \text{ for some choice of c} \leq 1\ &\therefore n^2 \in \mathcal{\Omega}\left(n^2\right)\ \end{aligned} $ Since $n^2$ is in both bounds, $n^2 \in \mathcal{\Theta}\left(n^2\right)$.
-* Is $\log(n) \in \mathcal{o}\left(n^\epsilon\right)$, where $\epsilon$ is any real number > 0? $ \begin{aligned} \lim\_{n\rightarrow\infty}\frac{\log(n)}{n^\epsilon} &= 0 \forall \epsilon > 0 \implies \log(n) \in \mathcal{o}(n^\epsilon) \forall \epsilon > 0\ L.H.S.: &\lim\_{n\rightarrow\infty}\frac{\log(n)}{n^\epsilon}\ &= \lim\_{n\rightarrow\infty} \frac{\epsilon\log(n^\frac{1}{\epsilon})}{n^\epsilon}\ &< \lim\_{n\rightarrow\infty} \frac{\epsilon n^\frac{1}{\epsilon\}}{n^\epsilon}\ &= \lim\_{n\rightarrow\infty} \frac{\epsilon}{n^{\epsilon - \frac{1}{\epsilon\}}} = 0\ &\therefore \log(n) \in \mathcal{o}\left(n^\epsilon\right) \forall \epsilon > 0 \end{aligned} $
+* Is $n^2 \in \mathcal{\Theta}\left(n^2\right)$?
+  $\begin{aligned} |n^2| &\overset{?}{\leq} c \cdot n^2\ 1 &\leq c \text{ for some choice of c } \geq 1\ &\therefore n^2 \in \mathcal{O}\left(n^2\right)\ \ |n^2| &\overset{?}{\geq} c \cdot n^2\ 1 &\geq c \text{ for some choice of c} \leq 1\ &\therefore n^2 \in \mathcal{\Omega}\left(n^2\right)\ \end{aligned} $ Since $n^2$ is in both bounds, $n^2 \in \mathcal{\Theta}\left(n^2\right)$.
+* Is $\log(n) \in \mathcal{o}\left(n^\epsilon\right)$, where $\epsilon$ is any real number > 0? 
+$$\begin{aligned}
+\lim_{n\rightarrow\infty}\frac{\log(n)}{n^\epsilon} &= 0 \forall \epsilon > 0 \implies \log(n) \in \mathcal{o}(n^\epsilon) \forall \epsilon > 0\\
+L.H.S.: &\lim_{n\rightarrow\infty}\frac{\log(n)}{n^\epsilon}\\
+&= \lim_{n\rightarrow\infty} \frac{\epsilon\log(n^\frac{1}{\epsilon})}{n^\epsilon}\\
+&< \lim_{n\rightarrow\infty} \frac{\epsilon n^\frac{1}{\epsilon}}{n^\epsilon}\\
+&= \lim_{n\rightarrow\infty} \frac{\epsilon}{n^{\epsilon - \frac{1}{\epsilon}}} = 0\\
+&\therefore \log(n) \in \mathcal{o}\left(n^\epsilon\right) \forall \epsilon > 0\end{aligned}$$
 
 #### Determining Time Complexity
 
@@ -203,7 +316,11 @@ def print_list_recursive(lst, i):
 
 Taking the size n to be the size of the list starting at index i, the runtime of the iterative function can be taken to be $\mathcal{\Theta}(n)$. The recursive function also takes $\mathcal{\Theta}(n)$, but it may be harder to see that. It helps to then think about the number of operations something has to do in the recurrence relation, which in this case is $f(i) = f(i+1) + 1, f(n) = 1$. Due to our definition of n, this function would take n recursion steps. Since each step takes 1 operation, the runtime looks as follows: $$f(i) = \sum_{i}^n 1 = n \in \mathcal{\Theta}(n)$$
 
-Another useful tool is the recursion tree. The Fibonacci function is actually _very_ costly, with a runtime of about $\mathcal{O}\left(2^n\right)$ - which is not obvious at all! Looking at the recursion tree, however, clues you into why this is the case: ![Recursion tree for the Fibonacci Sequence](https://i.stack.imgur.com/QVSdv.png) For a Fibonacci tree, the height of the tree is proportional to the input number (aka the input "size"). There are on the order of $2^n$ "leaves," or endpoints, of this tree - meaning that the runtime is $2^n\times 1 = 2^n$! This is super slow!
+Another useful tool is the recursion tree. The Fibonacci function is actually _very_ costly, with a runtime of about $\mathcal{O}\left(2^n\right)$ - which is not obvious at all! Looking at the recursion tree, however, clues you into why this is the case:
+
+![Recursion tree for the Fibonacci Sequence](https://i.stack.imgur.com/QVSdv.png)
+
+For a Fibonacci tree, the height of the tree is proportional to the input number (aka the input "size"). There are on the order of $2^n$ "leaves," or endpoints, of this tree - meaning that the runtime is $2^n\times 1 = 2^n$! This is super slow!
 
 ### The Master Theorem
 
@@ -219,13 +336,18 @@ Each case is an illustration of what terms dominate in the calculations with reg
 
 ### 1) Recursion
 
-1. Write a simple function called `fib(n)` that calculates the Fibonacci numbers in Python recursively. Run your code over a range of values from 1 to 25, and try plotting the runtimes of each in a line. What does it look like? _**HINT:**_**What is/are the base case(s) of the Fibonacci Sequence?**
-2. One of the major drawbacks to basic recursion is that values have to calculated repeatedly. For instance, in the Fibonacci sequence, $Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)= (Fibonacci(n-2) + Fibonacci(n-3)) + (Fibonacci(n-3) + Fibonacci(n-4))$ and so on. This wastes computational time! Is there a way that you can think of to speed this process up? Implement it and compare the time of your new function with `fact(n)` from part 1. _**HINT:**_**It involves storing values.**
-3. Congratulations! You have now discovered [Dynamic Programming](https://en.wikipedia.org/wiki/Dynamic\_programming), an extremely powerful algorithmic tool for solving complex problems that have [optimal substructure](https://en.wikipedia.org/wiki/Optimal\_substructure). What is the spatial complexity of your dynamic programming approach? Plot the runtimes of this algorithm versus the original one for the same range of values. _**HINT:**_**Use Matplotlib to plot your values**
+1. Write a simple function called `fib(n)` that calculates the Fibonacci numbers in Python recursively. Run your code over a range of values from 1 to 25, and try plotting the runtimes of each in a line. What does it look like? ___HINT:What is/are the base case(s) of the Fibonacci Sequence?___
+2. One of the major drawbacks to basic recursion is that values have to calculated repeatedly. For instance, in the Fibonacci sequence, $Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)= (Fibonacci(n-2) + Fibonacci(n-3)) + (Fibonacci(n-3) + Fibonacci(n-4))$ and so on. This wastes computational time! Is there a way that you can think of to speed this process up? Implement it and compare the time of your new function with `fib(n)` from part 1. ___HINT:It involves storing values.___
+3. Congratulations! You have now discovered [Dynamic Programming](https://en.wikipedia.org/wiki/Dynamic\_programming), an extremely powerful algorithmic tool for solving complex problems that have [optimal substructure](https://en.wikipedia.org/wiki/Optimal\_substructure). What is the spatial complexity of your dynamic programming approach? Plot the runtimes of this algorithm versus the original one for the same range of values. ___HINT:Use Matplotlib to plot your values___
 
-### 2) Floating Point Accuracy
+### 2) Loops
 
-1. The following code block calculates $e^{-x}$ via its Taylor Series (using the factorial function you created in Problem 1!), however it is wildly inaccurate even for small integers. The reason is that this code is not good for maintaining the accuracy of a floating point number. Try and improve upon it, and compare it to the value returned by `exp(-x)` (which is well optimized for accuracy!). Afterwards, implement the C++ code below in Python, and notice how the same problem does _not_ occur _**HINT:**_**Accuracy breaks down for really large numbers - maybe scaling down then scaling back up somehow would help? Similarly, try an iterative approach to calculating the sum, it's much easier for C++ to do $x^6\*x$ than $x^7$.**
+1. Given a list x, write two functions that take a string in and determine whether or not is it a [palindrome](https://en.wikipedia.org/wiki/Palindrome). Name one function `for_f` (and use a for loop to do this), and another `while_f` (using a while loop to do this)
+2. Given three lists, one of data in the form `[ [((x1(t0),y1(t0)), (x1(t0)',y1(t0)'), (x1(t0)'',y1(t0)'')), ...], ...]` (the 2d position, velocity, and acceleration for multiple objects), one detailing the time values of t0, t1, etc. for each list (`[ [t0, t1, ...], ... ]`), and another list listing the labels for each object in list 1, plot the position, velocity, and acceleration of each for the range of t values using at ___most___ two for loops. place this in a function `visualize(data, labels, times)`, and save the output to `trajectories.png`. ___HINT: Try unpacking and zipping values!___
+
+### 3) Floating Point Accuracy
+
+1. The following code block calculates $e^{-x}$ via its Taylor Series, however it is wildly inaccurate even for small integers. The reason is that this code is not good for maintaining the accuracy of a floating point number. Try and improve upon it, and compare it to the value returned by `exp(-x)` (which is well optimized for accuracy!). Afterwards, implement the C++ code below in Python, and notice how the same problem does _not_ occur ___HINT:Accuracy breaks down for really large numbers - maybe scaling down then scaling back up somehow would help? Similarly, try an iterative approach to calculating the sum, it's much easier for C++ to do $x^6*x$ than $x^7$.___
 
 ```cpp
 const int MAXIT=10000;
@@ -247,10 +369,10 @@ long double mexp(double x){
 }
 ```
 
-### 3) Algorithm Analysis
+### 4) Algorithm Analysis
 
 1. Given a pair of positive integers a and n, provide pseudo-code for a function `eff_exp(a, n)` that computes $a^n$ using only $\mathcal{O}(\log(n))$ multiplications. Prove that `eff_exp` $\in \mathcal{O}(\log(n))$. Assume that every operation (i.e. addition, multiplication) takes 1 "operation."
-2. Consider the following code block that permutes an array A of size n (remembering that ranges in python are integer ranges from $\[start, end)$ ):
+2. Consider the following code block that permutes an array A of size n (remembering that ranges in python are integer ranges from $[start, end)$ ):
 
 ```python
 def permute(A):
@@ -259,4 +381,4 @@ def permute(A):
     return A
 ```
 
-Show that for any $n > 2$ all permutations are not equally probable. _**HINT:**_**Something is not equally probable if the number of possible outcomes is not evenly divisible by the number of permutations**
+Show that for any $n > 2$ all permutations are not equally probable. ___HINT:Something is not equally probable if the number of possible outcomes is not evenly divisible by the number of permutations___

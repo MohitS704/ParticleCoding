@@ -6,11 +6,9 @@ title: "index"
 filename: "lnotes_book"
 ---
 
-# Introduction to Coding in Particle Physics (#introchapter)
+# Introduction to Coding in Particle Physics (_Work in progress_)
 
-__Mohit Srivastav__
-
-_Work in progress_
+Mohit Srivastav
 
 This is an __attempt__ at an introductory "textbook" for people entering data-intensive fields of physics, or even coding in general. I intend on using it for a course at Johns Hopkins University during Intersession 2024.
 
