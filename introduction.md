@@ -252,7 +252,7 @@ Bounding the time taken by something on the lower end is much less useful, excep
 
 The real usefulness of a lower bound is when there's what's called a tight bound, or a "Big-Theta" bound, on a process. Tight bounds are useful since Big-O and Big-Omega bounds can be really useless sometimes (i.e. do I really need a notation to tell me that $n^{1\times 10^6} > \log(n)$?) even though the may technically fall into bounds. The definition of Big-Theta relies on the definitions for both Big-Omega and Big-O bounds, as the definition is as follows:
 
-$$f(n) \in \mathcal{\Theta}\left(g(n)\right) \implies f(n) \in \mathcal{\Omega}\left(g(n)\right) \And f(n) \in \mathcal{O}\left(g(n)\right)$$
+$$f(n) \in \mathcal{\Theta}\left(g(n)\right) \implies f(n) \in \mathcal{\Omega}\left(g(n)\right) \land f(n) \in \mathcal{O}\left(g(n)\right)$$
 
 This means that the $f(n)$ is simultaneously $\geq$ and $\leq$ $g(n)$ for a given $g(n)$, or that they are in the same complexity class! Big-Theta bounds are useful for stating exactly what time complexity class a process is - as it doesn't suffer from the possible overly-generous bounds that are possible with Big-O or Big-Omega bounds.
 
