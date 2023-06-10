@@ -34,4 +34,4 @@ When code is undocumented, it can often be difficult to understand. This makes i
 
 ### From a Software Perspective
 
-Code is something that has to be continuously understood 
+Code is something that has to be continuously understood by the developer of your code, as well as the end user. For instance, imagine a program that takes in command line arguments - arguments like `-i` or `'--data` have no meaning without at least a brief description of what they are.

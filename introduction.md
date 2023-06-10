@@ -337,8 +337,16 @@ Each case is an illustration of what terms dominate in the calculations with reg
 ### 1) Recursion
 
 1. Write a simple function called `fib(n)` that calculates the Fibonacci numbers in Python recursively. Run your code over a range of values from 1 to 25, and try plotting the runtimes of each in a line. What does it look like? ___HINT:What is/are the base case(s) of the Fibonacci Sequence?___
-2. One of the major drawbacks to basic recursion is that values have to calculated repeatedly. For instance, in the Fibonacci sequence, $Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)= (Fibonacci(n-2) + Fibonacci(n-3)) + (Fibonacci(n-3) + Fibonacci(n-4))$ and so on. This wastes computational time! Is there a way that you can think of to speed this process up? Implement it and compare the time of your new function with `fib(n)` from part 1. ___HINT:It involves storing values.___
-3. Congratulations! You have now discovered [Dynamic Programming](https://en.wikipedia.org/wiki/Dynamic\_programming), an extremely powerful algorithmic tool for solving complex problems that have [optimal substructure](https://en.wikipedia.org/wiki/Optimal\_substructure). What is the spatial complexity of your dynamic programming approach? Plot the runtimes of this algorithm versus the original one for the same range of values. ___HINT:Use Matplotlib to plot your values___
+2. One of the major drawbacks to basic recursion is that values have to calculated repeatedly. For instance, in the Fibonacci sequence,
+
+$$\begin{aligned}
+  Fibonacci(n) &= Fibonacci(n-1) + Fibonacci(n-2) + ...\\
+   &= (Fibonacci(n-2) + Fibonacci(n-3)) + (Fibonacci(n-3) + Fibonacci(n-4)) + ...
+\end{aligned}$$
+
+and so on. This wastes computational time! Is there a way that you can think of to speed this process up? Implement it and compare the time of your new function with `fib(n)` from part 1. ___HINT:It involves storing values.___
+
+1. Congratulations! You have now discovered [Dynamic Programming](https://en.wikipedia.org/wiki/Dynamic\_programming), an extremely powerful algorithmic tool for solving complex problems that have [optimal substructure](https://en.wikipedia.org/wiki/Optimal\_substructure). What is the spatial complexity of your dynamic programming approach? Plot the runtimes of this algorithm versus the original one for the same range of values. ___HINT:Use Matplotlib to plot your values___
 
 ### 2) Loops
 
