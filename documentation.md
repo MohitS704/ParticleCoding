@@ -34,4 +34,54 @@ When code is undocumented, it can often be difficult to understand. This makes i
 
 ### From a Software Perspective
 
-Code is something that has to be continuously understood 
+The average piece of professionally written software has between [1 and 25 bugs per 1000 lines of code](https://stackoverflow.com/a/56043694) in professional industry - imagine the number of bugs that you or I have for individually written programs! This means that in order for code to maintain its usefulness, it has to be constantly maintained. In order for it to be constantly maintained and updated, it should be easy for someone to understand when coming back to it.
+
+Not only does this make it easier for a person to understand code, but it also means that the code will be better written to not include unnecessary redundancies! For example, let's say there is some code that defines a function to store mass values on lines 4-10, and a new function is being written that needs to access that mass function on line 500 5 months after the mass function was written. Without any comments, someone might simply _re-write_ the mass function needlessly, forgetting the earlier function exists! This is, of course, an extreme example, but the point still stands, comments and documentation help smoothen the development process.
+
+### From a Physics Perspective
+
+Let's look at some code together from [JHUGen](https://spin.pha.jhu.edu/), a Monte Carlo simulator for particle physics, and try to parse the physical meaning out of it after deleting the comments. The code is in Fortran, but the block is simple enough. This is the first time `qqq` and `decayMass` are accessed after their initialization, and the other variables are all imported from the parameters in other files.
+
+```fortran
+elseif( scheme.eq.4) then
+  if ( M_Zprime.ne.-1 ) then 
+    decayMass = M_Zprime
+  else
+    decayMass = M_Z
+  end if
+  if(0.25d0*(sHat) < decayMass**2) then
+    qqq = 0
+  else
+    qqq = sqrt(0.25d0*(sHat) - decayMass**2)
+  endif
+  qqq0=sqrt(0.25d0*(M_Reso**2) - decayMass**2)
+  GetBWPropagator =  1d0/( (sHat-M_Reso**2)**2 + (M_Reso*Ga_Reso*qqq/qqq0)**2 )
+```
+
+Well, knowing the context surrounding JHUGen, the decayMass is the two decay products of the Higgs (or Higgs subsitute) being simulated, and `M_ZPrime`/`M_Z` are some sort of decay products. Well what is `sHat`? Is it a particularly crude way of describing what happened at the toilet, or is it something genuinely physics related? It turns out that not _only_ is this variable funnily named, it also describes a genuine physics item in detail! The variable `sHat` is _supposed_ to represent $\hat{s}$, which is the square of a particle reconstructed mass - and is a good name motivated by nomenclature! However, let's look at the same code block without removing the comments.
+
+Okay, one can assume that can be parsed from anyone who uses a particle physics generator, the target audience of the software. However, scheme numbering is not exclusive to particle physics - what does scheme 4 mean? How is it different from scheme 1,2 or 3? Let's now look at the code with just a few one line comments scattered throughout:
+
+```fortran
+elseif( scheme.eq.4) then !alternate running width
+  if ( M_Zprime.ne.-1 ) then !if you're using ZPrime then it will consider the ZPrime mass
+    decayMass = M_Zprime
+  else
+    decayMass = M_Z !if you're doing Z-ZPrime stuff this scheme won't work anyways so the point is moot
+  end if
+  if(0.25d0*(sHat) < decayMass**2) then !sHat is the mass squared!
+    qqq = 0
+  else
+    qqq = sqrt(0.25d0*(sHat) - decayMass**2)
+  endif
+  qqq0=sqrt(0.25d0*(M_Reso**2) - decayMass**2)
+  GetBWPropagator =  1d0/( (sHat-M_Reso**2)**2 + (M_Reso*Ga_Reso*qqq/qqq0)**2 ) !new style running width
+```
+
+This paints a much clearer picture - `sHat` is explained explicitly, as is the decay mass. Similarly, it is now known that scheme 4 is the alternate running width scheme, and that `GetBWPropagator` is the propagator for the new style running width propagator! The addition of just 4 one line comments has added a whole new dimension of context and clarity to this code block - there is a lot less thinking required to understand this code!
+
+Here lies the importance of code in scientific circles - making sure that the decisions that are made are motivated by scientific phenomena.
+
+## How is code documented?
+
+There are two really useful types of comments in Python at least - and this text only really covers Python. These two types are inline comments and docstrings. Inline comments 

@@ -11,6 +11,69 @@
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
   <link rel="stylesheet" href="css/normalize.css" />
   <link rel="stylesheet" href="css/pandoc.css" />
 </head>
@@ -50,6 +113,41 @@
 <h2 id="why-is-documentation-important">Why is Documentation Important?</h2>
 <p>When code is undocumented, it can often be difficult to understand. This makes it difficult to parse for anyone in the future looking at code - <strong>including yourself!</strong> I know that many people have created a program to do something - maybe something that calculates a physical value - and when they come back to it after some time, they end up with no clue what they were thinking! This kind of blase attitude towards documentation is fine for small and self-understood scripts, but becomes much more of an issue when dealing with larger programs, and <em>especially</em> with things like packages.</p>
 <h3 id="from-a-software-perspective">From a Software Perspective</h3>
-<p>Code is something that has to be continuously understood</p>
+<p>The average piece of professionally written software has between <a href="https://stackoverflow.com/a/56043694">1 and 25 bugs per 1000 lines of code</a> in professional industry - imagine the number of bugs that you or I have for individually written programs! This means that in order for code to maintain its usefulness, it has to be constantly maintained. In order for it to be constantly maintained and updated, it should be easy for someone to understand when coming back to it.</p>
+<p>Not only does this make it easier for a person to understand code, but it also means that the code will be better written to not include unnecessary redundancies! For example, let’s say there is some code that defines a function to store mass values on lines 4-10, and a new function is being written that needs to access that mass function on line 500 5 months after the mass function was written. Without any comments, someone might simply <em>re-write</em> the mass function needlessly, forgetting the earlier function exists! This is, of course, an extreme example, but the point still stands, comments and documentation help smoothen the development process.</p>
+<h3 id="from-a-physics-perspective">From a Physics Perspective</h3>
+<p>Let’s look at some code together from <a href="https://spin.pha.jhu.edu/">JHUGen</a>, a Monte Carlo simulator for particle physics, and try to parse the physical meaning out of it after deleting the comments. The code is in Fortran, but the block is simple enough. This is the first time <code>qqq</code> and <code>decayMass</code> are accessed after their initialization, and the other variables are all imported from the parameters in other files.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode fortran"><code class="sourceCode fortran"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">elseif</span>( scheme<span class="op">.eq.</span><span class="dv">4</span>) <span class="kw">then</span></a>
+<a class="sourceLine" id="cb1-2" title="2">  <span class="kw">if</span> ( M_Zprime<span class="op">.ne.</span><span class="kw">-</span><span class="dv">1</span> ) <span class="kw">then</span> </a>
+<a class="sourceLine" id="cb1-3" title="3">    decayMass <span class="kw">=</span> M_Zprime</a>
+<a class="sourceLine" id="cb1-4" title="4">  <span class="kw">else</span></a>
+<a class="sourceLine" id="cb1-5" title="5">    decayMass <span class="kw">=</span> M_Z</a>
+<a class="sourceLine" id="cb1-6" title="6">  <span class="kw">end if</span></a>
+<a class="sourceLine" id="cb1-7" title="7">  <span class="kw">if</span>(<span class="fl">0.25d0</span><span class="kw">*</span>(sHat) <span class="op">&lt;</span> decayMass<span class="kw">**</span><span class="dv">2</span>) <span class="kw">then</span></a>
+<a class="sourceLine" id="cb1-8" title="8">    qqq <span class="kw">=</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-9" title="9">  <span class="kw">else</span></a>
+<a class="sourceLine" id="cb1-10" title="10">    qqq <span class="kw">=</span> <span class="bu">sqrt</span>(<span class="fl">0.25d0</span><span class="kw">*</span>(sHat) <span class="kw">-</span> decayMass<span class="kw">**</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1-11" title="11">  <span class="kw">endif</span></a>
+<a class="sourceLine" id="cb1-12" title="12">  qqq0<span class="kw">=</span><span class="bu">sqrt</span>(<span class="fl">0.25d0</span><span class="kw">*</span>(M_Reso<span class="kw">**</span><span class="dv">2</span>) <span class="kw">-</span> decayMass<span class="kw">**</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1-13" title="13">  GetBWPropagator <span class="kw">=</span>  <span class="fl">1d0</span><span class="kw">/</span>( (sHat<span class="kw">-</span>M_Reso<span class="kw">**</span><span class="dv">2</span>)<span class="kw">**</span><span class="dv">2</span> <span class="kw">+</span> (M_Reso<span class="kw">*</span>Ga_Reso<span class="kw">*</span>qqq<span class="kw">/</span>qqq0)<span class="kw">**</span><span class="dv">2</span> )</a></code></pre></div>
+<p>Well, knowing the context surrounding JHUGen, the decayMass is the two decay products of the Higgs (or Higgs subsitute) being simulated, and <code>M_ZPrime</code>/<code>M_Z</code> are some sort of decay products. Well what is <code>sHat</code>? Is it a particularly crude way of describing what happened at the toilet, or is it something genuinely physics related? It turns out that not <em>only</em> is this variable funnily named, it also describes a genuine physics item in detail! The variable <code>sHat</code> is <em>supposed</em> to represent <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>s</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{s}</annotation></semantics></math>, which is the square of a particle reconstructed mass - and is a good name motivated by nomenclature! However, let’s look at the same code block without removing the comments.</p>
+<p>Okay, one can assume that can be parsed from anyone who uses a particle physics generator, the target audience of the software. However, scheme numbering is not exclusive to particle physics - what does scheme 4 mean? How is it different from scheme 1,2 or 3? Let’s now look at the code with just a few one line comments scattered throughout:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode fortran"><code class="sourceCode fortran"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">elseif</span>( scheme<span class="op">.eq.</span><span class="dv">4</span>) <span class="kw">then</span> <span class="co">!alternate running width</span></a>
+<a class="sourceLine" id="cb2-2" title="2">  <span class="kw">if</span> ( M_Zprime<span class="op">.ne.</span><span class="kw">-</span><span class="dv">1</span> ) <span class="kw">then</span> <span class="co">!if you&#39;re using ZPrime then it will consider the ZPrime mass</span></a>
+<a class="sourceLine" id="cb2-3" title="3">    decayMass <span class="kw">=</span> M_Zprime</a>
+<a class="sourceLine" id="cb2-4" title="4">  <span class="kw">else</span></a>
+<a class="sourceLine" id="cb2-5" title="5">    decayMass <span class="kw">=</span> M_Z <span class="co">!if you&#39;re doing Z-ZPrime stuff this scheme won&#39;t work anyways so the point is moot</span></a>
+<a class="sourceLine" id="cb2-6" title="6">  <span class="kw">end if</span></a>
+<a class="sourceLine" id="cb2-7" title="7">  <span class="kw">if</span>(<span class="fl">0.25d0</span><span class="kw">*</span>(sHat) <span class="op">&lt;</span> decayMass<span class="kw">**</span><span class="dv">2</span>) <span class="kw">then</span> <span class="co">!sHat is the mass squared!</span></a>
+<a class="sourceLine" id="cb2-8" title="8">    qqq <span class="kw">=</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb2-9" title="9">  <span class="kw">else</span></a>
+<a class="sourceLine" id="cb2-10" title="10">    qqq <span class="kw">=</span> <span class="bu">sqrt</span>(<span class="fl">0.25d0</span><span class="kw">*</span>(sHat) <span class="kw">-</span> decayMass<span class="kw">**</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb2-11" title="11">  <span class="kw">endif</span></a>
+<a class="sourceLine" id="cb2-12" title="12">  qqq0<span class="kw">=</span><span class="bu">sqrt</span>(<span class="fl">0.25d0</span><span class="kw">*</span>(M_Reso<span class="kw">**</span><span class="dv">2</span>) <span class="kw">-</span> decayMass<span class="kw">**</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb2-13" title="13">  GetBWPropagator <span class="kw">=</span>  <span class="fl">1d0</span><span class="kw">/</span>( (sHat<span class="kw">-</span>M_Reso<span class="kw">**</span><span class="dv">2</span>)<span class="kw">**</span><span class="dv">2</span> <span class="kw">+</span> (M_Reso<span class="kw">*</span>Ga_Reso<span class="kw">*</span>qqq<span class="kw">/</span>qqq0)<span class="kw">**</span><span class="dv">2</span> ) <span class="co">!new style running width</span></a></code></pre></div>
+<p>This paints a much clearer picture - <code>sHat</code> is explained explicitly, as is the decay mass. Similarly, it is now known that scheme 4 is the alternate running width scheme, and that <code>GetBWPropagator</code> is the propagator for the new style running width propagator! The addition of just 4 one line comments has added a whole new dimension of context and clarity to this code block - there is a lot less thinking required to understand this code!</p>
+<p>Here lies the importance of code in scientific circles - making sure that the decisions that are made are motivated by scientific phenomena.</p>
+<h2 id="how-is-code-documented">How is code documented?</h2>
+<p>There are two really useful types of comments in Python at least - and this text only really covers Python. These two types are inline comments and docstrings. Inline comments</p>
 </body>
 </html>
