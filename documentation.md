@@ -26,7 +26,7 @@ numbersections: true
 
 ## WARNING
 
-A lot of this chapter is filled with my opinions on this subject, based off of personal experience along with the experience of those that I know. Documentation, and the amount of effort that you put into documenting things, is entirely subjective. However, the general consensus is that you should at least document _something_.
+A lot of this chapter is filled with my opinions on this subject, based off of personal experience along with the experience of those that I know. (__Once again, if you have different opinions, _tell me!_ I am nothing resembling an expert on this topic__) Documentation, and the amount of effort that you put into documenting things, is entirely subjective. However, the general consensus is that you should at least document _something_.
 
 ## Why is Documentation Important?
 
@@ -78,10 +78,58 @@ elseif( scheme.eq.4) then !alternate running width
   GetBWPropagator =  1d0/( (sHat-M_Reso**2)**2 + (M_Reso*Ga_Reso*qqq/qqq0)**2 ) !new style running width
 ```
 
-This paints a much clearer picture - `sHat` is explained explicitly, as is the decay mass. Similarly, it is now known that scheme 4 is the alternate running width scheme, and that `GetBWPropagator` is the propagator for the new style running width propagator! The addition of just 4 one line comments has added a whole new dimension of context and clarity to this code block - there is a lot less thinking required to understand this code!
+This paints a much clearer picture - `sHat` is explained explicitly, as is the decay mass. Similarly, it is now known that scheme 4 is the alternate running width scheme, and that `GetBWPropagator` is the propagator for the new style running width propagator! The addition of just 4 one line comments has added a whole new dimension of context and clarity to this code block - there is a lot less thinking required to understand this code - and a lot less guessing that has to happen.
 
-Here lies the importance of code in scientific circles - making sure that the decisions that are made are motivated by scientific phenomena.
+Here lies the importance of code in scientific circles - making sure that the decisions that are made are motivated by scientific phenomena - and being able to explain those decisions properly.
 
 ## How is code documented?
 
-There are two really useful types of comments in Python at least - and this text only really covers Python. These two types are inline comments and docstrings. Inline comments 
+There are two really useful types of comments in Python at least - and this text only really covers Python. These two types are _inline comments_ and _docstrings_. Both serve important purposes and complement each other's existence. One is usually more used to inline comments, as they don't have as much structure.
+
+Inline comments are the kind seen in the example above - they serve to clarify certain lines/blocks of code for clarity. They are as dense or as sparse as you'd like, and serve to improve clarity for code that is written.
+
+Docstrings are specially designed comments that go in functions to describe what they are and what they do. A nice description of docstrings is shown in [PEP 257](https://peps.python.org/pep-0257/), as defined by Python back in 2001. Since then, there are now a multitude of docstring styles in Python:
+
+* [Sphinx](https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html)
+* [NumPy](https://numpydoc.readthedocs.io/en/latest/format.html)
+* [Google](https://google.github.io/styleguide/pyguide.html)
+* There are a few others that I might not be mentioning - but you get the idea.
+
+The basic structure of a docstring contains the following:
+
+* A brief description of what the function does
+* A list of the input parameters
+  * This could include the expected input types of the function. Since Python does not have explicit types, this is useful!
+* What the function returns
+* Any errors that the function manually raises
+
+## Exercises
+
+### 1) Parsing Code
+
+1. This function doesn't have any comments, is named badly, has variable names that only make sense if you know the context surrounding the function, and re-assigns variables over and over again! Try and parse what the function does, and make a docstring for the following function in either the NumPy, Sphinx, or Google style. Similarly, suggest a useful name for the function.
+
+```python
+import numpy as np
+def do_something(a, arr, arr2=[], fact=False):
+    arr = np.array(arr)
+    arr = arr.astype(float)
+    signs = np.sign(arr)
+    arr = np.abs(arr)
+
+    if (a == 0) or (np.sum(arr) == 0):
+        return np.zeros(arr.shape)
+    
+    arr = signs*arr*a/np.sum(arr)
+    arr[~np.isfinite(arr)] = 0
+    if any(arr2):
+        if fact:
+            return arr, arr2, a/np.sum(arr)
+        
+        return arr, arr2
+    
+    elif fact:
+        return arr, a/np.sum(arr)
+    
+    return arr
+```
