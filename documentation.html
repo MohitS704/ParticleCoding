@@ -109,7 +109,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <hr />
 <h2 id="warning">WARNING</h2>
-<p>A lot of this chapter is filled with my opinions on this subject, based off of personal experience along with the experience of those that I know. Documentation, and the amount of effort that you put into documenting things, is entirely subjective. However, the general consensus is that you should at least document <em>something</em>.</p>
+<p>A lot of this chapter is filled with my opinions on this subject, based off of personal experience along with the experience of those that I know. (<strong>Once again, if you have different opinions, <em>tell me!</em> I am nothing resembling an expert on this topic</strong>) Documentation, and the amount of effort that you put into documenting things, is entirely subjective. However, the general consensus is that you should at least document <em>something</em>.</p>
 <h2 id="why-is-documentation-important">Why is Documentation Important?</h2>
 <p>When code is undocumented, it can often be difficult to understand. This makes it difficult to parse for anyone in the future looking at code - <strong>including yourself!</strong> I know that many people have created a program to do something - maybe something that calculates a physical value - and when they come back to it after some time, they end up with no clue what they were thinking! This kind of blase attitude towards documentation is fine for small and self-understood scripts, but becomes much more of an issue when dealing with larger programs, and <em>especially</em> with things like packages.</p>
 <h3 id="from-a-software-perspective">From a Software Perspective</h3>
@@ -145,9 +145,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb2-11" title="11">  <span class="kw">endif</span></a>
 <a class="sourceLine" id="cb2-12" title="12">  qqq0<span class="kw">=</span><span class="bu">sqrt</span>(<span class="fl">0.25d0</span><span class="kw">*</span>(M_Reso<span class="kw">**</span><span class="dv">2</span>) <span class="kw">-</span> decayMass<span class="kw">**</span><span class="dv">2</span>)</a>
 <a class="sourceLine" id="cb2-13" title="13">  GetBWPropagator <span class="kw">=</span>  <span class="fl">1d0</span><span class="kw">/</span>( (sHat<span class="kw">-</span>M_Reso<span class="kw">**</span><span class="dv">2</span>)<span class="kw">**</span><span class="dv">2</span> <span class="kw">+</span> (M_Reso<span class="kw">*</span>Ga_Reso<span class="kw">*</span>qqq<span class="kw">/</span>qqq0)<span class="kw">**</span><span class="dv">2</span> ) <span class="co">!new style running width</span></a></code></pre></div>
-<p>This paints a much clearer picture - <code>sHat</code> is explained explicitly, as is the decay mass. Similarly, it is now known that scheme 4 is the alternate running width scheme, and that <code>GetBWPropagator</code> is the propagator for the new style running width propagator! The addition of just 4 one line comments has added a whole new dimension of context and clarity to this code block - there is a lot less thinking required to understand this code!</p>
-<p>Here lies the importance of code in scientific circles - making sure that the decisions that are made are motivated by scientific phenomena.</p>
+<p>This paints a much clearer picture - <code>sHat</code> is explained explicitly, as is the decay mass. Similarly, it is now known that scheme 4 is the alternate running width scheme, and that <code>GetBWPropagator</code> is the propagator for the new style running width propagator! The addition of just 4 one line comments has added a whole new dimension of context and clarity to this code block - there is a lot less thinking required to understand this code - and a lot less guessing that has to happen.</p>
+<p>Here lies the importance of code in scientific circles - making sure that the decisions that are made are motivated by scientific phenomena - and being able to explain those decisions properly.</p>
 <h2 id="how-is-code-documented">How is code documented?</h2>
-<p>There are two really useful types of comments in Python at least - and this text only really covers Python. These two types are inline comments and docstrings. Inline comments</p>
+<p>There are two really useful types of comments in Python at least - and this text only really covers Python. These two types are <em>inline comments</em> and <em>docstrings</em>. Both serve important purposes and complement each other’s existence. One is usually more used to inline comments, as they don’t have as much structure.</p>
+<p>Inline comments are the kind seen in the example above - they serve to clarify certain lines/blocks of code for clarity. They are as dense or as sparse as you’d like, and serve to improve clarity for code that is written.</p>
+<p>Docstrings are specially designed comments that go in functions to describe what they are and what they do. A nice description of docstrings is shown in <a href="https://peps.python.org/pep-0257/">PEP 257</a>, as defined by Python back in 2001. Since then, there are now a multitude of docstring styles in Python:</p>
+<ul>
+<li><a href="https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html">Sphinx</a></li>
+<li><a href="https://numpydoc.readthedocs.io/en/latest/format.html">NumPy</a></li>
+<li><a href="https://google.github.io/styleguide/pyguide.html">Google</a></li>
+<li>There are a few others that I might not be mentioning - but you get the idea.</li>
+</ul>
+<p>The basic structure of a docstring contains the following:</p>
+<ul>
+<li>A brief description of what the function does</li>
+<li>A list of the input parameters
+<ul>
+<li>This could include the expected input types of the function. Since Python does not have explicit types, this is useful!</li>
+</ul></li>
+<li>What the function returns</li>
+<li>Any errors that the function manually raises</li>
+</ul>
+<h2 id="exercises">Exercises</h2>
+<h3 id="parsing-code">1) Parsing Code</h3>
+<ol type="1">
+<li>This function doesn’t have any comments, is named badly, has variable names that only make sense if you know the context surrounding the function, and re-assigns variables over and over again! Try and parse what the function does, and make a docstring for the following function in either the NumPy, Sphinx, or Google style. Similarly, suggest a useful name for the function.</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="im">import</span> numpy <span class="im">as</span> np</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">def</span> do_something(a, arr, arr2<span class="op">=</span>[], fact<span class="op">=</span><span class="va">False</span>):</a>
+<a class="sourceLine" id="cb3-3" title="3">    arr <span class="op">=</span> np.array(arr)</a>
+<a class="sourceLine" id="cb3-4" title="4">    arr <span class="op">=</span> arr.astype(<span class="bu">float</span>)</a>
+<a class="sourceLine" id="cb3-5" title="5">    signs <span class="op">=</span> np.sign(arr)</a>
+<a class="sourceLine" id="cb3-6" title="6">    arr <span class="op">=</span> np.<span class="bu">abs</span>(arr)</a>
+<a class="sourceLine" id="cb3-7" title="7"></a>
+<a class="sourceLine" id="cb3-8" title="8">    <span class="cf">if</span> (a <span class="op">==</span> <span class="dv">0</span>) <span class="kw">or</span> (np.<span class="bu">sum</span>(arr) <span class="op">==</span> <span class="dv">0</span>):</a>
+<a class="sourceLine" id="cb3-9" title="9">        <span class="cf">return</span> np.zeros(arr.shape)</a>
+<a class="sourceLine" id="cb3-10" title="10">    </a>
+<a class="sourceLine" id="cb3-11" title="11">    arr <span class="op">=</span> signs<span class="op">*</span>arr<span class="op">*</span>a<span class="op">/</span>np.<span class="bu">sum</span>(arr)</a>
+<a class="sourceLine" id="cb3-12" title="12">    arr[<span class="op">~</span>np.isfinite(arr)] <span class="op">=</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb3-13" title="13">    <span class="cf">if</span> <span class="bu">any</span>(arr2):</a>
+<a class="sourceLine" id="cb3-14" title="14">        <span class="cf">if</span> fact:</a>
+<a class="sourceLine" id="cb3-15" title="15">            <span class="cf">return</span> arr, arr2, a<span class="op">/</span>np.<span class="bu">sum</span>(arr)</a>
+<a class="sourceLine" id="cb3-16" title="16">        </a>
+<a class="sourceLine" id="cb3-17" title="17">        <span class="cf">return</span> arr, arr2</a>
+<a class="sourceLine" id="cb3-18" title="18">    </a>
+<a class="sourceLine" id="cb3-19" title="19">    <span class="cf">elif</span> fact:</a>
+<a class="sourceLine" id="cb3-20" title="20">        <span class="cf">return</span> arr, a<span class="op">/</span>np.<span class="bu">sum</span>(arr)</a>
+<a class="sourceLine" id="cb3-21" title="21">    </a>
+<a class="sourceLine" id="cb3-22" title="22">    <span class="cf">return</span> arr</a></code></pre></div>
 </body>
 </html>
